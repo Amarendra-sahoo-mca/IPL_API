@@ -10,7 +10,7 @@ import { DropdownType, IResponse } from 'src/interfaces/api.response';
 import Messages from 'src/constants/messages';
 
 import { PaginationSortingDTO } from 'src/utils/pagination.dto';
-import { applyPagination, applySorting, matchdetails } from 'src/utils/common';
+import { applyPagination, applySorting } from 'src/utils/common';
 
 import { ExcelService } from 'src/utils/globalServices/excel.service';
 import { TeamEntity } from 'src/entities/team.entity';
@@ -18,6 +18,7 @@ import { FindOptionsWhere, Like, Repository } from 'typeorm';
 import { MatchEntity } from 'src/entities/match.entity';
 import { MatchDto } from './match.dto';
 import { Team } from 'src/enums/common.enum';
+import { matchdetails } from 'src/utils/data/matchinfo';
 
 @Injectable()
 export class MatchService {

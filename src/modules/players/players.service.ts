@@ -12,6 +12,7 @@ import { playersEntity } from 'src/entities/player.entity';
 import { ExcelService } from 'src/utils/globalServices/excel.service';
 import { TeamEntity } from 'src/entities/team.entity';
 import { FindOptionsWhere, Like, Repository } from 'typeorm';
+import { playerdetails } from 'src/utils/data/playerinfo';
 
 
 @Injectable()
@@ -50,6 +51,41 @@ export class playersService {
       message: `players`,
 
       data: response,
+    } as IResponse;
+  }catch(err:any){
+    const response: IResponse = {
+      statusCode: HttpStatus.BAD_REQUEST,
+      success: false,
+      message: `no data found`,
+      data: err,
+    };
+    return response;
+  }
+  }
+  async setimage() {
+    let count =0;
+    try{
+     await Promise.all(playerdetails.map(async(item:any)=>{
+        const res = await this.repository.findOne({where:{ name : Like(`${item.name}%`)}})
+        if(res){
+          res.photo = item.img;
+          await this.repository.update(res.id, res);
+          ++count
+        }
+        else{
+          console.log(item.name);
+          
+        }
+      }));
+      
+      
+    console.log('total image count',playerdetails.length);
+    
+    return {
+      statusCode: HttpStatus.OK,
+      success: true,
+      message: `${count} players image set successfully`,
+      data: null,
     } as IResponse;
   }catch(err:any){
     const response: IResponse = {

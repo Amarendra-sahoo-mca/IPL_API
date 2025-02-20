@@ -52,6 +52,12 @@ export class TeamEntity{
 
     @Column({nullable : true})
     banner: string;
+
+    @Column({nullable : true})
+    venue: string;
+
+    @Column({nullable : true})
+    them: string;    
     
     @CreateDateColumn()
     created_on: Date;

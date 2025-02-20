@@ -109,7 +109,8 @@ export class TeamService {
     .getOne();
     let captainData;
     response.players = response.players.filter((item: any) => {
-      if (item.id === response.captain) {
+      
+      if (item.id == response.captain) {
         captainData = item;
         return false; 
       }

@@ -35,6 +35,12 @@ export class playersController{
          return this.terminalService.findAll(queryParams);
     }
 
+    @Get("set_player_image")
+    @ApiOperation({ summary: "Set players image" })
+    getAlll(){
+         return this.terminalService.setimage();
+    }
+
 
     @Get("byname/:name")
     @ApiOperation({ summary: "List playerss by name" })

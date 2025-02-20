@@ -1,0 +1,130 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TeamController = exports.FileUploadDto = void 0;
+const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
+const multer_1 = require("multer");
+const fs = require("fs");
+const platform_express_1 = require("@nestjs/platform-express");
+const multer_helper_1 = require("../../middlewires/multer.helper");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
+const path_1 = require("path");
+const teams_service_1 = require("./teams.service");
+const team_entity_1 = require("../../entities/team.entity");
+const mime = require("mime-types");
+class FileUploadDto {
+}
+exports.FileUploadDto = FileUploadDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({ type: 'string', format: 'binary' }),
+    __metadata("design:type", Object)
+], FileUploadDto.prototype, "file", void 0);
+let TeamController = class TeamController {
+    constructor(terminalService, repository) {
+        this.terminalService = terminalService;
+        this.repository = repository;
+    }
+    getAll() {
+        return this.terminalService.findAll();
+    }
+    findOne(id) {
+        return this.terminalService.findOne(id);
+    }
+    async getSingleFiles(filePath, res) {
+        try {
+            const decodedPath = decodeURIComponent(filePath);
+            const fullPath = (0, path_1.join)(process.cwd(), decodedPath);
+            if (!fs.existsSync(fullPath)) {
+                throw new common_1.NotFoundException(`File not found: ${filePath}`);
+            }
+            const mimeType = mime.lookup(fullPath) || 'application/octet-stream';
+            res.set({
+                'Content-Type': mimeType,
+                'Content-Disposition': `attachment; filename="${filePath.split(/[\\/]/).pop()}"`,
+            });
+            fs.createReadStream(fullPath).pipe(res);
+        }
+        catch (error) {
+            console.log(error);
+            throw new common_1.NotFoundException('Invalid file path');
+        }
+    }
+    update(id, files) {
+        return this.terminalService.update(parseInt(id), files);
+    }
+};
+exports.TeamController = TeamController;
+__decorate([
+    (0, common_1.Get)("all"),
+    (0, swagger_1.ApiOperation)({ summary: "List All teams" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], TeamController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Get)(":id"),
+    (0, swagger_1.ApiOperation)({ summary: "List one team" }),
+    __param(0, (0, common_1.Param)("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], TeamController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Get)('logo/preview/:filePath'),
+    __param(0, (0, common_1.Param)('filePath')),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], TeamController.prototype, "getSingleFiles", null);
+__decorate([
+    (0, common_1.Patch)("update_banner/:id"),
+    (0, common_1.UseInterceptors)((0, platform_express_1.AnyFilesInterceptor)({
+        storage: (0, multer_1.diskStorage)({
+            destination: multer_helper_1.MulterHelper.destinationPath,
+            filename: multer_helper_1.MulterHelper.customFileName,
+        }),
+    })),
+    (0, swagger_1.ApiConsumes)('multipart/form-data'),
+    (0, swagger_1.ApiBody)({
+        schema: {
+            type: 'object',
+            properties: {
+                'banner_path': {
+                    type: 'array',
+                    items: {
+                        type: 'string',
+                        format: 'binary',
+                    },
+                },
+            },
+        },
+    }),
+    (0, swagger_1.ApiOperation)({ summary: "Update team banner" }),
+    __param(0, (0, common_1.Param)("id")),
+    __param(1, (0, common_1.UploadedFiles)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Array]),
+    __metadata("design:returntype", void 0)
+], TeamController.prototype, "update", null);
+exports.TeamController = TeamController = __decorate([
+    (0, common_1.Controller)("team"),
+    (0, swagger_1.ApiTags)("team"),
+    __param(1, (0, typeorm_1.InjectRepository)(team_entity_1.TeamEntity)),
+    __metadata("design:paramtypes", [teams_service_1.TeamService,
+        typeorm_2.Repository])
+], TeamController);
+//# sourceMappingURL=teams.controller.js.map
