@@ -84,17 +84,9 @@ let TeamService = class TeamService {
         try {
             const response = await this.repository.createQueryBuilder('team')
                 .leftJoinAndMapMany('team.players', player_entity_1.playersEntity, 'player', 'team.id = player.team_buy')
+                .leftJoinAndMapOne('team.captainData', player_entity_1.playersEntity, 'player2', 'team.captain = player2.id')
                 .where('team.id = :id', { id })
                 .getOne();
-            let captainData;
-            response.players = response.players.filter((item) => {
-                if (item.id == response.captain) {
-                    captainData = item;
-                    return false;
-                }
-                return true;
-            });
-            response.captainData = captainData;
             return {
                 statusCode: common_1.HttpStatus.OK,
                 success: true,

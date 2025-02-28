@@ -66,7 +66,7 @@ let MatchService = class MatchService {
     }
     async findAl(id) {
         try {
-            const res = this.repository.createQueryBuilder('matches')
+            const res = await this.repository.createQueryBuilder('matches')
                 .innerJoinAndMapOne('matches.hometeam_data', team_entity_1.TeamEntity, 'team', 'matches.homeTeam = team.id')
                 .innerJoinAndMapOne('matches.awayteam_data', team_entity_1.TeamEntity, 'team2', 'matches.awayTeam = team2.id')
                 .where('matches.homeTeam = :id OR matches.awayTeam = :id', { id })

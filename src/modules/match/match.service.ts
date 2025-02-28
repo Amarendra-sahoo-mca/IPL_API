@@ -72,16 +72,16 @@ export class MatchService {
  async findAl(id: number) {
 
     try{
-    const res = this.repository.createQueryBuilder('matches')
+    const res =await this.repository.createQueryBuilder('matches')
     .innerJoinAndMapOne('matches.hometeam_data',TeamEntity, 'team', 'matches.homeTeam = team.id')
     .innerJoinAndMapOne('matches.awayteam_data',TeamEntity, 'team2', 'matches.awayTeam = team2.id')
     .where('matches.homeTeam = :id OR matches.awayTeam = :id',{id})   
     .getMany();
+    
     return {
       statusCode: HttpStatus.OK,
       success: true,
       message: `matches`,
-
       data: res,
     } as IResponse;
   }catch(err:any){
