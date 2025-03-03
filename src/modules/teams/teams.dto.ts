@@ -18,6 +18,11 @@ export class teamDto{
     spend_money:string;
 
     @ApiProperty({
+        description: `venue`,
+    })
+    venue:string;
+
+    @ApiProperty({
         description: `rest_money`,
     })
     rest_money:string;

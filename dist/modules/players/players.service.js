@@ -157,6 +157,8 @@ let playersService = class playersService {
                     return null;
                 }
                 SellPrice += row.sell_price;
+                if (!row.designation)
+                    row.designation = 2;
                 return row;
             })
                 .filter(Boolean));

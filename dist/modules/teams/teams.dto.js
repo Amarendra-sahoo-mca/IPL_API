@@ -34,6 +34,12 @@ __decorate([
 ], teamDto.prototype, "spend_money", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
+        description: `venue`,
+    }),
+    __metadata("design:type", String)
+], teamDto.prototype, "venue", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
         description: `rest_money`,
     }),
     __metadata("design:type", String)

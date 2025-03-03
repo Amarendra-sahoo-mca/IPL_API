@@ -25,6 +25,27 @@ let TeamService = class TeamService {
         this.repository = repository;
         this.excelService = excelService;
     }
+    async save(AgentCommissiomtoUploadtDto) {
+        try {
+            const createdResponse = await this.repository.save(AgentCommissiomtoUploadtDto);
+            const response = {
+                statusCode: common_1.HttpStatus.CREATED,
+                success: true,
+                message: `team ${messages_1.default.SAVE}`,
+                data: createdResponse,
+            };
+            return response;
+        }
+        catch (error) {
+            const response = {
+                statusCode: common_1.HttpStatus.BAD_REQUEST,
+                success: false,
+                message: `Admin ${messages_1.default.SAVE_FAIL}`,
+                data: error,
+            };
+            return response;
+        }
+    }
     async findAll() {
         try {
             const res = this.repository.createQueryBuilder('player');
@@ -48,19 +69,19 @@ let TeamService = class TeamService {
     }
     async update(id, files) {
         try {
-            const response = await this.findOne(id);
-            const user = response.data;
+            const response = await this.repository.findOneBy({ id });
+            const user = response;
             if (!user) {
                 const response = {
                     statusCode: common_1.HttpStatus.BAD_REQUEST,
                     success: false,
-                    message: `team Document ${messages_1.default.NOT_FOUND}`,
+                    message: `team ${messages_1.default.NOT_FOUND}`,
                     data: null,
                 };
                 return response;
             }
             if (files.length > 0) {
-                user.banner = files[0].path;
+                user.logo = files[0].path;
             }
             const updatedResponse = await this.repository.update(id, user);
             return {
@@ -71,6 +92,7 @@ let TeamService = class TeamService {
             };
         }
         catch (error) {
+            console.log(error);
             const response = {
                 statusCode: common_1.HttpStatus.BAD_REQUEST,
                 success: false,

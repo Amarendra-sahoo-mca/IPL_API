@@ -25,6 +25,30 @@ export class TeamService {
     private readonly excelService: ExcelService
   ) {}
 
+  async save(AgentCommissiomtoUploadtDto: teamDto) {
+    try {
+      const createdResponse = await this.repository.save(
+        AgentCommissiomtoUploadtDto,
+      );
+
+      const response: IResponse = {
+        statusCode: HttpStatus.CREATED,
+        success: true,
+        message: `team ${Messages.SAVE}`,
+        data: createdResponse,
+      };
+      return response;
+    } catch (error: any) {
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `Admin ${Messages.SAVE_FAIL}`,
+        data: error,
+      };
+      return response;
+    }
+  }
+
   async findAll() {
 
     try{
@@ -66,19 +90,19 @@ export class TeamService {
 
   async update(id: number,files:Express.Multer.File[]) {
     try {   
-    const response = await this.findOne(id);
-    const user = response.data;
+    const response = await this.repository.findOneBy({id});
+    const user = response;
     if (!user) {
         const response: IResponse = {
             statusCode: HttpStatus.BAD_REQUEST,
             success: false,
-            message: `team Document ${Messages.NOT_FOUND}`,
+            message: `team ${Messages.NOT_FOUND}`,
             data: null,
         };
         return response;
       }
         if(files.length > 0){
-          user.banner = files[0].path;
+          user.logo = files[0].path;
         }
         // updatedObj.status = 2;
         const  updatedResponse = await this.repository.update(id, user);
@@ -90,6 +114,8 @@ export class TeamService {
             data: updatedResponse
         };
     } catch (error: any) {
+      console.log(error);
+      
         const response: IResponse = {
             statusCode: HttpStatus.BAD_REQUEST,
             success: false,

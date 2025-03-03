@@ -25,6 +25,7 @@ const path_1 = require("path");
 const teams_service_1 = require("./teams.service");
 const team_entity_1 = require("../../entities/team.entity");
 const mime = require("mime-types");
+const teams_dto_1 = require("./teams.dto");
 class FileUploadDto {
 }
 exports.FileUploadDto = FileUploadDto;
@@ -64,6 +65,9 @@ let TeamController = class TeamController {
     }
     update(id, files) {
         return this.terminalService.update(parseInt(id), files);
+    }
+    save(DTO) {
+        return this.terminalService.save(DTO);
     }
 };
 exports.TeamController = TeamController;
@@ -120,6 +124,14 @@ __decorate([
     __metadata("design:paramtypes", [String, Array]),
     __metadata("design:returntype", void 0)
 ], TeamController.prototype, "update", null);
+__decorate([
+    (0, common_1.Post)("create"),
+    (0, swagger_1.ApiOperation)({ summary: "save AgentCommissiontoUpload" }),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [teams_dto_1.teamDto]),
+    __metadata("design:returntype", void 0)
+], TeamController.prototype, "save", null);
 exports.TeamController = TeamController = __decorate([
     (0, common_1.Controller)("team"),
     (0, swagger_1.ApiTags)("team"),

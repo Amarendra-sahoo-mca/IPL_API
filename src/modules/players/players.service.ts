@@ -178,7 +178,7 @@ export class playersService {
           }
           SellPrice += row.sell_price
           
-
+          if(!row.designation) row.designation = 2;
 
           // If row is valid, return the designation object
           return row;

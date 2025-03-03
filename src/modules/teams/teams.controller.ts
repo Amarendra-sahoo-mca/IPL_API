@@ -15,6 +15,7 @@ import { Response } from 'express';
 import { TeamService } from "./teams.service";
 import { TeamEntity } from "src/entities/team.entity";
 import * as mime from 'mime-types';
+import { teamDto } from "./teams.dto";
 
 
 export class FileUploadDto {
@@ -108,6 +109,14 @@ export class TeamController{
       @UploadedFiles() files: Array<Express.Multer.File>
     ) {       
       return this.terminalService.update(parseInt(id), files);
+    }
+
+    @Post("create")
+    // @UseGuards(JwtAuthGuard)
+    // @Roles(Role.ADMIN)
+    @ApiOperation({ summary: "save AgentCommissiontoUpload" })
+    save(@Body() DTO:teamDto) {
+        return this.terminalService.save(DTO);
     }
     
 } 
