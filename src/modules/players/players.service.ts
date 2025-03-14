@@ -1,4 +1,9 @@
-import { BadRequestException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DropdownType, IResponse } from 'src/interfaces/api.response';
 
@@ -13,138 +18,163 @@ import { ExcelService } from 'src/utils/globalServices/excel.service';
 import { TeamEntity } from 'src/entities/team.entity';
 import { FindOptionsWhere, Like, Repository } from 'typeorm';
 import { playerdetails } from 'src/utils/data/playerinfo';
-
+import { FilterDTO } from './filter.dto';
 
 @Injectable()
 export class playersService {
   constructor(
-    @InjectRepository(playersEntity) private repository: Repository<playersEntity>,
-    @InjectRepository(TeamEntity) private teamRepository: Repository<TeamEntity>,
-    private readonly excelService: ExcelService
+    @InjectRepository(playersEntity)
+    private repository: Repository<playersEntity>,
+    @InjectRepository(TeamEntity)
+    private teamRepository: Repository<TeamEntity>,
+    private readonly excelService: ExcelService,
   ) {}
 
-  async findAll(queryParams: PaginationSortingDTO) {
+  async findAll(queryParams: FilterDTO) {
+    try {
+      const where: FindOptionsWhere<any> = {};
+      const pagination = applyPagination(queryParams.page);
+      const order = applySorting(
+        queryParams.sortBy,
+        queryParams.sortOrder,
+        playersEntity,
+      );
+     
+      if (queryParams.name) {
+        where.name = Like(`%${queryParams.name}%`);
+      }
+      if (queryParams.skill) {
+        where.designation = queryParams.skill;
+      }
+      const totalData = await this.repository.createQueryBuilder('player').where(where).getMany();
+      const res = this.repository
+        .createQueryBuilder('player')
+        .innerJoinAndMapOne(
+          'player.team',
+          TeamEntity,
+          'team',
+          'player.team_buy = team.id',
+        ).where(where);
+       
+      if (pagination.skip) {
+        res.skip(pagination.skip);
+      }
+      if (pagination.take) {
+        res.take(pagination.take);
+      }
+      if (order) {
+        Object.keys(order).forEach((key) => {
+          res.addOrderBy(`user.${key}`, order[key]);
+        });
+      }
 
-    try{
-    const pagination = applyPagination(queryParams.page);
-    const order = applySorting(queryParams.sortBy, queryParams.sortOrder, playersEntity);
-
-    const res = this.repository.createQueryBuilder('player')
-    .innerJoinAndMapOne('player.team',TeamEntity, 'team', 'player.team_buy = team.id');
-    
-    if (pagination.skip) {
-      res.skip(pagination.skip);
+      const response = await res.getMany();
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `players`,
+        totaldata:totalData.length,
+        data: response,
+      } as any;
+    } catch (err: any) {
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `no data found`,
+        data: err,
+      };
+      return response;
     }
-    if (pagination.take) {
-      res.take(pagination.take);
-    }
-    if (order) {
-      Object.keys(order).forEach((key) => {
-        res.addOrderBy(`user.${key}`, order[key]);
-      });
-    }
-   
-    const response = await res.getMany();
-    return {
-      statusCode: HttpStatus.OK,
-      success: true,
-      message: `players`,
-
-      data: response,
-    } as IResponse;
-  }catch(err:any){
-    const response: IResponse = {
-      statusCode: HttpStatus.BAD_REQUEST,
-      success: false,
-      message: `no data found`,
-      data: err,
-    };
-    return response;
-  }
   }
   async setimage() {
-    let count =0;
-    try{
-     await Promise.all(playerdetails.map(async(item:any)=>{
-        const res = await this.repository.findOne({where:{ name : Like(`${item.name}%`)}})
-        if(res){
-          res.photo = item.img;
-          await this.repository.update(res.id, res);
-          ++count
-        }
-        else{
-          console.log(item.name);
-          
-        }
-      }));
-      
-      
-    console.log('total image count',playerdetails.length);
-    
-    return {
-      statusCode: HttpStatus.OK,
-      success: true,
-      message: `${count} players image set successfully`,
-      data: null,
-    } as IResponse;
-  }catch(err:any){
-    const response: IResponse = {
-      statusCode: HttpStatus.BAD_REQUEST,
-      success: false,
-      message: `no data found`,
-      data: err,
-    };
-    return response;
-  }
+    let count = 0;
+    try {
+      await Promise.all(
+        playerdetails.map(async (item: any) => {
+          const res = await this.repository.findOne({
+            where: { name: Like(`${item.name}%`) },
+          });
+          if (res) {
+            res.photo = item.img;
+            await this.repository.update(res.id, res);
+            ++count;
+          } else {
+            console.log(item.name);
+          }
+        }),
+      );
+
+      console.log('total image count', playerdetails.length);
+
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `${count} players image set successfully`,
+        data: null,
+      } as IResponse;
+    } catch (err: any) {
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `no data found`,
+        data: err,
+      };
+      return response;
+    }
   }
 
-
-  async findAllbyname(queryParams: PaginationSortingDTO, name:string) {
+  async findAllbyname(queryParams: PaginationSortingDTO, name: string) {
     const where: FindOptionsWhere<any> = {};
     const pagination = applyPagination(queryParams.page);
-    const order = applySorting(queryParams.sortBy, queryParams.sortOrder, playersEntity);
+    const order = applySorting(
+      queryParams.sortBy,
+      queryParams.sortOrder,
+      playersEntity,
+    );
 
     if (name) {
       where.name = Like(`%${name}%`);
     }
-    try{
-     const res = this.repository.createQueryBuilder('player')
-    .innerJoinAndMapOne('player.team',TeamEntity, 'team', 'player.team_buy = team.id')  
-    .where(where);
+    try {
+      const res = this.repository
+        .createQueryBuilder('player')
+        .innerJoinAndMapOne(
+          'player.team',
+          TeamEntity,
+          'team',
+          'player.team_buy = team.id',
+        )
+        .where(where);
 
-    if (pagination.skip) {
-      res.skip(pagination.skip);
+      if (pagination.skip) {
+        res.skip(pagination.skip);
+      }
+      if (pagination.take) {
+        res.take(pagination.take);
+      }
+      if (order) {
+        Object.keys(order).forEach((key) => {
+          res.addOrderBy(`user.${key}`, order[key]);
+        });
+      }
+      const response = await res.getMany();
+
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `players by name`,
+        data: response,
+      } as IResponse;
+    } catch (err: any) {
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `no data found`,
+        data: err,
+      };
+      return response;
     }
-    if (pagination.take) {
-      res.take(pagination.take);
-    }
-    if (order) {
-      Object.keys(order).forEach((key) => {
-        res.addOrderBy(`user.${key}`, order[key]);
-      });
-    }
-    const response = await res.getMany();
-    
-    return {
-      statusCode: HttpStatus.OK,
-      success: true,
-      message: `players by name`,
-      data: response,
-    } as IResponse;
-  }catch(err:any){
-    const response: IResponse = {
-      statusCode: HttpStatus.BAD_REQUEST,
-      success: false,
-      message: `no data found`,
-      data: err,
-    };
-    return response;
   }
-
-  }
-
-
-
 
   async importFromExcel(file: Express.Multer.File): Promise<any> {
     if (!file) {
@@ -161,29 +191,39 @@ export class playersService {
 
       // Validate headers
       if (!data[0].hasOwnProperty('name')) {
-        throw new BadRequestException('Excel file must contain a "name" column');
+        throw new BadRequestException(
+          'Excel file must contain a "name" column',
+        );
       }
 
       // Validate and transform data
       const errors: string[] = [];
       let SellPrice = 0;
-      const validDesignations: Partial<any>[] = await Promise.all(data
-        .map(async (row, index) => {
-          const rowNumber = index + 1; // 1-based index for user-friendly error messages
+      const validDesignations: Partial<any>[] = await Promise.all(
+        data
+          .map(async (row, index) => {
+            const rowNumber = index + 1; // 1-based index for user-friendly error messages
 
-          // Validate name (required)
-          if (!row.name || typeof row.name !== 'string' || row.name.trim() === '') {
-            errors.push(`Row ${rowNumber}: Name is required and cannot be empty`);
-            return null; // Return null for invalid rows
-          }
-          SellPrice += row.sell_price
-          
-          if(!row.designation) row.designation = 2;
+            // Validate name (required)
+            if (
+              !row.name ||
+              typeof row.name !== 'string' ||
+              row.name.trim() === ''
+            ) {
+              errors.push(
+                `Row ${rowNumber}: Name is required and cannot be empty`,
+              );
+              return null; // Return null for invalid rows
+            }
+            SellPrice += row.sell_price;
 
-          // If row is valid, return the designation object
-          return row;
-        })
-        .filter(Boolean)); // Remove null values from the array
+            if (!row.designation) row.designation = 2;
+
+            // If row is valid, return the designation object
+            return row;
+          })
+          .filter(Boolean),
+      ); // Remove null values from the array
 
       // If there are any validation errors, throw them
       if (errors.length > 0) {
@@ -199,26 +239,33 @@ export class playersService {
       }
 
       // Save to database
-      await this.repository.save(validDesignations.map(data => this.repository.create(data)));   
-      
-      const team_data = await this.teamRepository.findOneBy({ id: validDesignations[1].team_buy });
-          console.log('new data', team_data, '\n---------------\n');
-          let spendMoney = parseInt(team_data.spend_money);
-          spendMoney += SellPrice;
-          const restmoney = parseInt(team_data.money_have) - spendMoney;
-          team_data.spend_money = spendMoney.toString();
-          team_data.rest_money = restmoney.toString();
+      await this.repository.save(
+        validDesignations.map((data) => this.repository.create(data)),
+      );
 
-          console.log('update data ----------------------\n', team_data);
+      const team_data = await this.teamRepository.findOneBy({
+        id: validDesignations[1].team_buy,
+      });
+      console.log('new data', team_data, '\n---------------\n');
+      let spendMoney = parseInt(team_data.spend_money);
+      spendMoney += SellPrice;
+      const restmoney = parseInt(team_data.money_have) - spendMoney;
+      team_data.spend_money = spendMoney.toString();
+      team_data.rest_money = restmoney.toString();
 
-          const save_responce = await this.teamRepository.update(team_data.id, team_data);
+      console.log('update data ----------------------\n', team_data);
+
+      const save_responce = await this.teamRepository.update(
+        team_data.id,
+        team_data,
+      );
       const response: IResponse = {
         statusCode: HttpStatus.OK,
         success: true,
         message: `${validDesignations.length} Data imported successfully`,
         data: validDesignations,
-      }
-        return response;
+      };
+      return response;
     } catch (error) {
       // Handle specific BadRequestException errors
       if (error instanceof BadRequestException) {
@@ -236,60 +283,66 @@ export class playersService {
     }
   }
 
-  async update(id: number, userdocumentDTO: playersDto ,files:Express.Multer.File[]) {
-        
+  async update(
+    id: number,
+    userdocumentDTO: playersDto,
+    files: Express.Multer.File[],
+  ) {
     const response = await this.findOne(id);
     const user = response.data;
-    
+
     if (!user || user.length == 0) {
-        const response: IResponse = {
-            statusCode: HttpStatus.BAD_REQUEST,
-            success: false,
-            message: `players Document ${Messages.NOT_FOUND}`,
-            data: null,
-        };
-        return response;
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `players Document ${Messages.NOT_FOUND}`,
+        data: null,
+      };
+      return response;
     }
     try {
+      const filteredDto = Object.fromEntries(
+        Object.entries(userdocumentDTO).filter(
+          ([_, value]) => value !== '' && value !== null,
+        ),
+      );
 
-        const filteredDto = Object.fromEntries(
-            Object.entries(userdocumentDTO).filter(([_, value]) => value !== '' && value !== null)
-          );
+      const updatedObj = this.repository.merge(user, filteredDto);
 
-           
-        const updatedObj = this.repository.merge(user, filteredDto);
-    
-        if(files.length > 0){
-            
-            
-            updatedObj.photo = files[0].path;
-        }
-        // updatedObj.status = 2;
-        const  updatedResponse = await this.repository.update(id, updatedObj);
-         
-        return {
-            statusCode: HttpStatus.OK,
-            success: true,
-            message: `players ${Messages.UPDATE}`,
-            data: updatedResponse
-        };
+      if (files.length > 0) {
+        updatedObj.photo = files[0].path;
+      }
+      // updatedObj.status = 2;
+      const updatedResponse = await this.repository.update(id, updatedObj);
+
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `players ${Messages.UPDATE}`,
+        data: updatedResponse,
+      };
     } catch (error: any) {
-        
-        
-        const response: IResponse = {
-            statusCode: HttpStatus.BAD_REQUEST,
-            success: false,
-            message: `players ${Messages.UPDATE_FAILURE}`,
-            data: error,
-        };
-        return response;
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `players ${Messages.UPDATE_FAILURE}`,
+        data: error,
+      };
+      return response;
     }
-}
-
+  }
 
   async findOne(id: number) {
-    const response: playersEntity = await this.repository.findOneBy({ id });
-   
+    const response: any = await this.repository
+      .createQueryBuilder('player')
+      .innerJoinAndMapOne(
+        'player.team',
+        TeamEntity,
+        'team',
+        'player.team_buy = team.id',
+      )
+      .where('player.id = :id', { id })
+      .getOne();
 
     return response
       ? ({
@@ -306,32 +359,28 @@ export class playersService {
         } as IResponse);
   }
 
-  
-
-  async save(Dtos: playersDto ,files:Express.Multer.File[]) {
+  async save(Dtos: playersDto, files: Express.Multer.File[]) {
     try {
-            if(files[0]){
-              Dtos.photo = files[0].path;
-            }
-            const savedDocument = await this.repository.save(Dtos);
-            
-           
-        const response: IResponse = {
-            statusCode: HttpStatus.CREATED,
-            success: true,
-            message: `players created`,
-            data: savedDocument,
-        };
-        return response;
-    } catch (error: any) {            
-        const response: IResponse = {
-            statusCode: HttpStatus.BAD_REQUEST,
-            success: false,
-            message: `try again User-Document unable to submit`,
-            data: error.message,
-        };
-        return response;
-    }
-}
+      if (files[0]) {
+        Dtos.photo = files[0].path;
+      }
+      const savedDocument = await this.repository.save(Dtos);
 
+      const response: IResponse = {
+        statusCode: HttpStatus.CREATED,
+        success: true,
+        message: `players created`,
+        data: savedDocument,
+      };
+      return response;
+    } catch (error: any) {
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `try again User-Document unable to submit`,
+        data: error.message,
+      };
+      return response;
+    }
+  }
 }

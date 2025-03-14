@@ -30,10 +30,19 @@ let playersService = class playersService {
     }
     async findAll(queryParams) {
         try {
+            const where = {};
             const pagination = (0, common_2.applyPagination)(queryParams.page);
             const order = (0, common_2.applySorting)(queryParams.sortBy, queryParams.sortOrder, player_entity_1.playersEntity);
-            const res = this.repository.createQueryBuilder('player')
-                .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id');
+            if (queryParams.name) {
+                where.name = (0, typeorm_2.Like)(`%${queryParams.name}%`);
+            }
+            if (queryParams.skill) {
+                where.designation = queryParams.skill;
+            }
+            const totalData = await this.repository.createQueryBuilder('player').where(where).getMany();
+            const res = this.repository
+                .createQueryBuilder('player')
+                .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id').where(where);
             if (pagination.skip) {
                 res.skip(pagination.skip);
             }
@@ -50,6 +59,7 @@ let playersService = class playersService {
                 statusCode: common_1.HttpStatus.OK,
                 success: true,
                 message: `players`,
+                totaldata: totalData.length,
                 data: response,
             };
         }
@@ -67,7 +77,9 @@ let playersService = class playersService {
         let count = 0;
         try {
             await Promise.all(playerinfo_1.playerdetails.map(async (item) => {
-                const res = await this.repository.findOne({ where: { name: (0, typeorm_2.Like)(`${item.name}%`) } });
+                const res = await this.repository.findOne({
+                    where: { name: (0, typeorm_2.Like)(`${item.name}%`) },
+                });
                 if (res) {
                     res.photo = item.img;
                     await this.repository.update(res.id, res);
@@ -103,7 +115,8 @@ let playersService = class playersService {
             where.name = (0, typeorm_2.Like)(`%${name}%`);
         }
         try {
-            const res = this.repository.createQueryBuilder('player')
+            const res = this.repository
+                .createQueryBuilder('player')
                 .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id')
                 .where(where);
             if (pagination.skip) {
@@ -152,7 +165,9 @@ let playersService = class playersService {
             const validDesignations = await Promise.all(data
                 .map(async (row, index) => {
                 const rowNumber = index + 1;
-                if (!row.name || typeof row.name !== 'string' || row.name.trim() === '') {
+                if (!row.name ||
+                    typeof row.name !== 'string' ||
+                    row.name.trim() === '') {
                     errors.push(`Row ${rowNumber}: Name is required and cannot be empty`);
                     return null;
                 }
@@ -171,8 +186,10 @@ let playersService = class playersService {
             if (validDesignations.length === 0) {
                 throw new common_1.BadRequestException('No valid data found in the Excel file');
             }
-            await this.repository.save(validDesignations.map(data => this.repository.create(data)));
-            const team_data = await this.teamRepository.findOneBy({ id: validDesignations[1].team_buy });
+            await this.repository.save(validDesignations.map((data) => this.repository.create(data)));
+            const team_data = await this.teamRepository.findOneBy({
+                id: validDesignations[1].team_buy,
+            });
             console.log('new data', team_data, '\n---------------\n');
             let spendMoney = parseInt(team_data.spend_money);
             spendMoney += SellPrice;
@@ -223,7 +240,7 @@ let playersService = class playersService {
                 statusCode: common_1.HttpStatus.OK,
                 success: true,
                 message: `players ${messages_1.default.UPDATE}`,
-                data: updatedResponse
+                data: updatedResponse,
             };
         }
         catch (error) {
@@ -237,7 +254,11 @@ let playersService = class playersService {
         }
     }
     async findOne(id) {
-        const response = await this.repository.findOneBy({ id });
+        const response = await this.repository
+            .createQueryBuilder('player')
+            .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id')
+            .where('player.id = :id', { id })
+            .getOne();
         return response
             ? {
                 statusCode: common_1.HttpStatus.OK,

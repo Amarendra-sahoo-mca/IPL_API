@@ -18,13 +18,13 @@ const swagger_1 = require("@nestjs/swagger");
 const multer_1 = require("multer");
 const fs = require("fs");
 const platform_express_1 = require("@nestjs/platform-express");
-const pagination_dto_1 = require("../../utils/pagination.dto");
 const players_service_1 = require("./players.service");
 const multer_helper_1 = require("../../middlewires/multer.helper");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const path_1 = require("path");
 const player_entity_1 = require("../../entities/player.entity");
+const filter_dto_1 = require("./filter.dto");
 class FileUploadDto {
 }
 exports.FileUploadDto = FileUploadDto;
@@ -42,9 +42,6 @@ let playersController = class playersController {
     }
     getAlll() {
         return this.terminalService.setimage();
-    }
-    getAllbyname(name, queryParams) {
-        return this.terminalService.findAllbyname(queryParams, name);
     }
     findOne(id) {
         return this.terminalService.findOne(id);
@@ -99,7 +96,7 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: "List All playerss" }),
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [pagination_dto_1.PaginationSortingDTO]),
+    __metadata("design:paramtypes", [filter_dto_1.FilterDTO]),
     __metadata("design:returntype", void 0)
 ], playersController.prototype, "getAll", null);
 __decorate([
@@ -109,15 +106,6 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], playersController.prototype, "getAlll", null);
-__decorate([
-    (0, common_1.Get)("byname/:name"),
-    (0, swagger_1.ApiOperation)({ summary: "List playerss by name" }),
-    __param(0, (0, common_1.Param)('name')),
-    __param(1, (0, common_1.Query)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, pagination_dto_1.PaginationSortingDTO]),
-    __metadata("design:returntype", void 0)
-], playersController.prototype, "getAllbyname", null);
 __decorate([
     (0, common_1.Get)(":id"),
     (0, swagger_1.ApiOperation)({ summary: "List one players" }),

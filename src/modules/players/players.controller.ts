@@ -14,6 +14,7 @@ import { Repository } from "typeorm";
 import { join } from "path";
 import { Response } from 'express';
 import { playersEntity } from "src/entities/player.entity";
+import { FilterDTO } from "./filter.dto";
 
 export class FileUploadDto {
   @ApiProperty({ type: 'string', format: 'binary' })
@@ -31,7 +32,7 @@ export class playersController{
 
     @Get("all")
     @ApiOperation({ summary: "List All playerss" })
-    getAll(@Query() queryParams: PaginationSortingDTO){
+    getAll(@Query() queryParams: FilterDTO){
          return this.terminalService.findAll(queryParams);
     }
 
@@ -42,11 +43,11 @@ export class playersController{
     }
 
 
-    @Get("byname/:name")
-    @ApiOperation({ summary: "List playerss by name" })
-    getAllbyname(@Param('name') name:string,@Query() queryParams: PaginationSortingDTO){
-         return this.terminalService.findAllbyname(queryParams,name);
-    }
+    // @Get("byname/:name")
+    // @ApiOperation({ summary: "List playerss by name" })
+    // getAllbyname(@Param('name') name:string,@Query() queryParams: PaginationSortingDTO){
+    //      return this.terminalService.findAllbyname(queryParams,name);
+    // }
    
 
     @Get(":id")

@@ -5,12 +5,13 @@ import { playersEntity } from 'src/entities/player.entity';
 import { ExcelService } from 'src/utils/globalServices/excel.service';
 import { TeamEntity } from 'src/entities/team.entity';
 import { Repository } from 'typeorm';
+import { FilterDTO } from './filter.dto';
 export declare class playersService {
     private repository;
     private teamRepository;
     private readonly excelService;
     constructor(repository: Repository<playersEntity>, teamRepository: Repository<TeamEntity>, excelService: ExcelService);
-    findAll(queryParams: PaginationSortingDTO): Promise<IResponse>;
+    findAll(queryParams: FilterDTO): Promise<any>;
     setimage(): Promise<IResponse>;
     findAllbyname(queryParams: PaginationSortingDTO, name: string): Promise<IResponse>;
     importFromExcel(file: Express.Multer.File): Promise<any>;

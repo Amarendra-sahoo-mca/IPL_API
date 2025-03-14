@@ -79,7 +79,7 @@ export const applyPagination = (page: string | number = 1): PaginationData => {
         currentPage = 1;
     }
 
-    const take = 100; // Number of records to fetch (like limit)
+    const take = 20; // Number of records to fetch (like limit)
     const skip = (currentPage - 1) * take; // Number of records to skip (like offset)
 
     return {

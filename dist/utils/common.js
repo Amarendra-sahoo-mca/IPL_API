@@ -64,7 +64,7 @@ const applyPagination = (page = 1) => {
     if (isNaN(currentPage) || currentPage <= 0) {
         currentPage = 1;
     }
-    const take = 100;
+    const take = 20;
     const skip = (currentPage - 1) * take;
     return {
         take,
