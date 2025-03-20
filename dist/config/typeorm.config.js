@@ -5,6 +5,7 @@ const config_1 = require("@nestjs/config");
 const glob_1 = require("glob");
 const match_entity_1 = require("../entities/match.entity");
 const player_entity_1 = require("../entities/player.entity");
+const points_entity_1 = require("../entities/points.entity");
 const team_entity_1 = require("../entities/team.entity");
 const teamLogo_entity_1 = require("../entities/teamLogo.entity");
 const util_1 = require("util");
@@ -22,7 +23,7 @@ exports.typeOrmAsyncConfig = {
             database: process.env.DB_NAME || config.get('DB_NAME'),
             password: process.env.DB_PASSWORD || config.get('DB_PASSWORD'),
             entities: [
-                player_entity_1.playersEntity, team_entity_1.TeamEntity, teamLogo_entity_1.TeamLogoEntity, match_entity_1.MatchEntity
+                player_entity_1.playersEntity, team_entity_1.TeamEntity, teamLogo_entity_1.TeamLogoEntity, match_entity_1.MatchEntity, points_entity_1.PointEntity
             ],
             extra: {
                 charset: 'utf8mb4_unicode_ci',

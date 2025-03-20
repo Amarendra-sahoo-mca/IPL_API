@@ -41,7 +41,16 @@ let playersController = class playersController {
         return this.terminalService.findAll(queryParams);
     }
     getAlll() {
-        return this.terminalService.setimage();
+        return this.terminalService.setnetionality();
+    }
+    findTop() {
+        return this.terminalService.findTop();
+    }
+    findTopruns() {
+        return this.terminalService.orangecap();
+    }
+    findpurplecap() {
+        return this.terminalService.purplecap();
     }
     findOne(id) {
         return this.terminalService.findOne(id);
@@ -106,6 +115,27 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], playersController.prototype, "getAlll", null);
+__decorate([
+    (0, common_1.Get)('/top10'),
+    (0, swagger_1.ApiOperation)({ summary: "List top players" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], playersController.prototype, "findTop", null);
+__decorate([
+    (0, common_1.Get)('/orange_cap'),
+    (0, swagger_1.ApiOperation)({ summary: "List top players" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], playersController.prototype, "findTopruns", null);
+__decorate([
+    (0, common_1.Get)('/purplecap'),
+    (0, swagger_1.ApiOperation)({ summary: "List top players" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], playersController.prototype, "findpurplecap", null);
 __decorate([
     (0, common_1.Get)(":id"),
     (0, swagger_1.ApiOperation)({ summary: "List one players" }),

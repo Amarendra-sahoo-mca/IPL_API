@@ -10,6 +10,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TeamModule } from './modules/teams/teams.module';
 import { playersModule } from './modules/players/players.module';
 import { MatchModule } from './modules/match/match.module';
+import { PointsModule } from './modules/points/points.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { MatchModule } from './modules/match/match.module';
     EventEmitterModule.forRoot(),
     TeamModule,
     playersModule,
-    MatchModule
+    MatchModule,
+    PointsModule
 
 
   ],

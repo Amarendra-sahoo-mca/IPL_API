@@ -6,31 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.playersModule = void 0;
+exports.PointsModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const players_controller_1 = require("./players.controller");
-const players_service_1 = require("./players.service");
-const player_entity_1 = require("../../entities/player.entity");
-const excel_service_1 = require("../../utils/globalServices/excel.service");
-const team_entity_1 = require("../../entities/team.entity");
 const points_entity_1 = require("../../entities/points.entity");
-let playersModule = class playersModule {
+const points_controller_1 = require("./points.controller");
+const points_service_1 = require("./points.service");
+let PointsModule = class PointsModule {
 };
-exports.playersModule = playersModule;
-exports.playersModule = playersModule = __decorate([
+exports.PointsModule = PointsModule;
+exports.PointsModule = PointsModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([player_entity_1.playersEntity, team_entity_1.TeamEntity, points_entity_1.PointEntity])
+            typeorm_1.TypeOrmModule.forFeature([points_entity_1.PointEntity])
         ],
         controllers: [
-            players_controller_1.playersController
+            points_controller_1.PointsController
         ],
         providers: [
-            players_service_1.playersService,
-            excel_service_1.ExcelService
+            points_service_1.PointsService
         ],
         exports: []
     })
-], playersModule);
-//# sourceMappingURL=players.module.js.map
+], PointsModule);
+//# sourceMappingURL=points.module.js.map

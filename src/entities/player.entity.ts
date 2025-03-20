@@ -33,7 +33,25 @@ export class playersEntity{
     from: string;
 
     @Column()
+    debut_year: string;
+
+    @Column()
+    strike_rate: number;
+
+    @Column()
+    match_played: number;
+
+    @Column()
+    economy: string;
+
+    @Column()
     team_buy: number;
+
+    @Column()
+    runs: number;
+
+    @Column()
+    wickets: number;
 
     @Column({nullable :true})
     age: number;

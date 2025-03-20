@@ -12,6 +12,9 @@ export declare class playersController {
     constructor(terminalService: playersService, repository: Repository<playersEntity>);
     getAll(queryParams: FilterDTO): Promise<any>;
     getAlll(): Promise<import("../../interfaces/api.response").IResponse>;
+    findTop(): Promise<import("../../interfaces/api.response").IResponse>;
+    findTopruns(): Promise<import("../../interfaces/api.response").IResponse>;
+    findpurplecap(): Promise<import("../../interfaces/api.response").IResponse>;
     findOne(id: number): Promise<import("../../interfaces/api.response").IResponse>;
     save(body: any, files: Express.Multer.File[]): Promise<import("../../interfaces/api.response").IResponse>;
     importExcel(file: Express.Multer.File): Promise<any>;

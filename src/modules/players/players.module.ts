@@ -6,10 +6,11 @@ import { playersService } from "./players.service";
 import { playersEntity } from "src/entities/player.entity";
 import { ExcelService } from "src/utils/globalServices/excel.service";
 import { TeamEntity } from "src/entities/team.entity";
+import { PointEntity } from "src/entities/points.entity";
 
 @ Module({
     imports: [
-        TypeOrmModule.forFeature([playersEntity,TeamEntity])
+        TypeOrmModule.forFeature([playersEntity,TeamEntity,PointEntity])
     ],
     controllers: [
         playersController

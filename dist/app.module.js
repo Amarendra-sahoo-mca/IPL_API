@@ -19,6 +19,7 @@ const event_emitter_1 = require("@nestjs/event-emitter");
 const teams_module_1 = require("./modules/teams/teams.module");
 const players_module_1 = require("./modules/players/players.module");
 const match_module_1 = require("./modules/match/match.module");
+const points_module_1 = require("./modules/points/points.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -37,7 +38,8 @@ exports.AppModule = AppModule = __decorate([
             event_emitter_1.EventEmitterModule.forRoot(),
             teams_module_1.TeamModule,
             players_module_1.playersModule,
-            match_module_1.MatchModule
+            match_module_1.MatchModule,
+            points_module_1.PointsModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

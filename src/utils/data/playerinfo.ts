@@ -1,323 +1,321 @@
 export const playerdetails = [
-    {
-        "name": "Ruturaj Gaikwad",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/102.png"
-    },
-    {
-        "name": "MS Dhoni",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/57.png"
-    },
-    {
-        "name": "Devon Conway",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2023/601.png"
-    },
-    {
-        "name": "Shaik Rasheed",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/778.png"
-    },
-    {
-        "name": "Rachin Ravindra",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/724.png"
-    },
-    {
-        "name": "Ravindra Jadeja",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/46.png"
-    },
-    {
-        "name": "Shivam Dube",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/211.png"
-    },
-    {
-        "name": "Mukesh Choudhary",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/970.png"
-    },
-    {
-        "name": "Matheesha Pathirana",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1014.png"
-    },
-        {
-        "name": "Jake Fraser-McGurk",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/3115.png"
-    },
-    {
-        "name": "Abishek Porel",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1580.png"
-    },
-    {
-        "name": "Tristan Stubbs",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1017.png"
-    },
-    {
-        "name": "Axar Patel",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/110.png"
-    },
-    {
-        "name": "Mukesh Kumar",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1462.png"
-    },
-    {
-        "name": "Kuldeep Yadav",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/14.png"
-    },
-    {
-        "name": "Shubman Gill",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/62.png"
-    },
-    {
-        "name": "R. Sai Kishore",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/544.png"
-    },
-    {
-        "name": "Jayant Yadav",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/165.png"
-    },
-    {
-        "name": "Sai Sudharsan",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/976.png"
-    },
-    {
-        "name": "Shahrukh Khan",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/590.png"
-    },
-    {
-        "name": "Manav Suthar",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/2443.png"
-    },
-    {
-        "name": "Rahul Tewatia",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/120.png"
-    },
-    {
-        "name": "Rashid Khan",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/218.png"
-    },
-    {
-        "name": "Rinku Singh",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/152.png"
-    },
-    {
-        "name": "Rahmanullah Gurbaz",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/641.png"
-    },
-    {
-        "name": "Angkrish Raghuvanshi",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/787.png"
-    },
-    {
-        "name": "Manish Pandey",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/16.png"
-    },
-    {
-        "name": "Ajinkya Rahane",
-        "img": "https://assets.iplt20.com/ipl/IPLHeadshot2022/135.png"
-    },
-    {
-        "name": "Venkatesh Iyer",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/584.png"
-    },
-    {
-        "name": "Anukul Roy",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/160.png"
-    },
-    {
-        "name": "Ramandeep Singh",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/991.png"
-    },
-    {
-        "name": "Andre Russell",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/141.png"
-    },
-    {
-        "name": "Vaibhav Arora",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/583.png"
-    },
-    {
-        "name": "Harshit Rana",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1013.png"
-    },
-    {
-        "name": "Sunil Narine",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/156.png"
-    },
-    {
-        "name": "Varun Chakravarthy",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/140.png"
-    },
-    {
-        "name": "Nicholas Pooran",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/136.png"
-    },
-    {
-        "name": "Arshin Kulkarni",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/2788.png"
-    },
-    {
-        "name": "Ayush Badoni",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/985.png"
-    },
-    {
-        "name": "Avesh Khan",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2023/109.png"
-    },
-    {
-        "name": "M. Siddharth",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/532.png"
-    },
-    {
-        "name": "Mayank Yadav",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/987.png"
-    },
-    {
-        "name": "Mohsin Khan",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/541.png"
-    },
-    {
-        "name": "Ravi Bishnoi",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/520.png"
-    },
-    {
-        "name": "Rohit Sharma",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/6.png"
-    },
-    {
-        "name": "Suryakumar Yadav",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/174.png"
-    },
-    {
-        "name": "Tilak Varma",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/993.png"
-    },
-    {
-        "name": "Naman Dhir",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/3107.png"
-    },
-    {
-        "name": "Hardik Pandya",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/54.png"
-    },
-    {
-        "name": "Arjun Tendulkar",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/585.png"
-    },
-    {
-        "name": "Jasprit Bumrah",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/9.png"
-    },
-    {
-        "name": "Prabhsimran Singh",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/137.png"
-    },
-    {
-        "name": "Shashank Singh",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/191.png"
-    },
-    {
-        "name": "Harpreet Brar",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/130.png"
-    },
-    {
-        "name": "Arshdeep Singh",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/125.png"
-    },
-    {
-        "name": "Sanju Samson",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/190.png"
-    },
-    {
-        "name": "Shubham Dubey",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/3112.png"
-    },
-    {
-        "name": "Kunal Rathore",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1540.png"
-    },
-    {
-        "name": "Shimron Hetmyer",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/210.png"
-    },
-    {
-        "name": "Yashasvi Jaiswal",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/533.png"
-    },
-    {
-        "name": "Dhruv Jurel",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1004.png"
-    },
-    {
-        "name": "Riyan Parag",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/189.png"
-    },
-    {
-        "name": "Sandeep Sharma",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/220.png"
-    },
-    {
-        "name": "Rajat Patidar",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/597.png"
-    },
-    {
-        "name": "Virat Kohli",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/2.png"
-    },
-    {
-        "name": "Swapnil Singh",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1483.png"
-    },
-    {
-        "name": "Yash Dayal",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/978.png"
-    },
-    {
-        "name": "Heinrich Klaasen",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/202.png"
-    },
-    {
-        "name": "Travis Head",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/37.png"
-    },
-    {
-        "name": "Abhishek Sharma",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/212.png"
-    },
-    {
-        "name": "Nitish Kumar Reddy",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/1944.png"
-    },
-    {
-        "name": "Jaydev Unadkat",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/180.png"
-    },
-    {
-        "name": "Pat Cummins",
-        "img": "https://documents.iplt20.com/ipl/IPLHeadshot2024/33.png"
-    }
-]
-
-
+  {
+    name: 'Ruturaj Gaikwad',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/102.png',
+  },
+  {
+    name: 'MS Dhoni',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/57.png',
+  },
+  {
+    name: 'Devon Conway',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2023/601.png',
+  },
+  {
+    name: 'Shaik Rasheed',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/778.png',
+  },
+  {
+    name: 'Rachin Ravindra',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/724.png',
+  },
+  {
+    name: 'Ravindra Jadeja',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/46.png',
+  },
+  {
+    name: 'Shivam Dube',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/211.png',
+  },
+  {
+    name: 'Mukesh Choudhary',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/970.png',
+  },
+  {
+    name: 'Matheesha Pathirana',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1014.png',
+  },
+  {
+    name: 'Jake Fraser-McGurk',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/3115.png',
+  },
+  {
+    name: 'Abishek Porel',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1580.png',
+  },
+  {
+    name: 'Tristan Stubbs',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1017.png',
+  },
+  {
+    name: 'Axar Patel',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/110.png',
+  },
+  {
+    name: 'Mukesh Kumar',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1462.png',
+  },
+  {
+    name: 'Kuldeep Yadav',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/14.png',
+  },
+  {
+    name: 'Shubman Gill',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/62.png',
+  },
+  {
+    name: 'R. Sai Kishore',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/544.png',
+  },
+  {
+    name: 'Jayant Yadav',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/165.png',
+  },
+  {
+    name: 'Sai Sudharsan',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/976.png',
+  },
+  {
+    name: 'Shahrukh Khan',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/590.png',
+  },
+  {
+    name: 'Manav Suthar',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/2443.png',
+  },
+  {
+    name: 'Rahul Tewatia',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/120.png',
+  },
+  {
+    name: 'Rashid Khan',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/218.png',
+  },
+  {
+    name: 'Rinku Singh',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/152.png',
+  },
+  {
+    name: 'Rahmanullah Gurbaz',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/641.png',
+  },
+  {
+    name: 'Angkrish Raghuvanshi',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/787.png',
+  },
+  {
+    name: 'Manish Pandey',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/16.png',
+  },
+  {
+    name: 'Ajinkya Rahane',
+    img: 'https://assets.iplt20.com/ipl/IPLHeadshot2022/135.png',
+  },
+  {
+    name: 'Venkatesh Iyer',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/584.png',
+  },
+  {
+    name: 'Anukul Roy',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/160.png',
+  },
+  {
+    name: 'Ramandeep Singh',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/991.png',
+  },
+  {
+    name: 'Andre Russell',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/141.png',
+  },
+  {
+    name: 'Vaibhav Arora',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/583.png',
+  },
+  {
+    name: 'Harshit Rana',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1013.png',
+  },
+  {
+    name: 'Sunil Narine',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/156.png',
+  },
+  {
+    name: 'Varun Chakravarthy',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/140.png',
+  },
+  {
+    name: 'Nicholas Pooran',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/136.png',
+  },
+  {
+    name: 'Arshin Kulkarni',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/2788.png',
+  },
+  {
+    name: 'Ayush Badoni',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/985.png',
+  },
+  {
+    name: 'Avesh Khan',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2023/109.png',
+  },
+  {
+    name: 'M. Siddharth',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/532.png',
+  },
+  {
+    name: 'Mayank Yadav',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/987.png',
+  },
+  {
+    name: 'Mohsin Khan',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/541.png',
+  },
+  {
+    name: 'Ravi Bishnoi',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/520.png',
+  },
+  {
+    name: 'Rohit Sharma',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/6.png',
+  },
+  {
+    name: 'Suryakumar Yadav',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/174.png',
+  },
+  {
+    name: 'Tilak Varma',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/993.png',
+  },
+  {
+    name: 'Naman Dhir',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/3107.png',
+  },
+  {
+    name: 'Hardik Pandya',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/54.png',
+  },
+  {
+    name: 'Arjun Tendulkar',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/585.png',
+  },
+  {
+    name: 'Jasprit Bumrah',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/9.png',
+  },
+  {
+    name: 'Prabhsimran Singh',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/137.png',
+  },
+  {
+    name: 'Shashank Singh',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/191.png',
+  },
+  {
+    name: 'Harpreet Brar',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/130.png',
+  },
+  {
+    name: 'Arshdeep Singh',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/125.png',
+  },
+  {
+    name: 'Sanju Samson',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/190.png',
+  },
+  {
+    name: 'Shubham Dubey',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/3112.png',
+  },
+  {
+    name: 'Kunal Rathore',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1540.png',
+  },
+  {
+    name: 'Shimron Hetmyer',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/210.png',
+  },
+  {
+    name: 'Yashasvi Jaiswal',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/533.png',
+  },
+  {
+    name: 'Dhruv Jurel',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1004.png',
+  },
+  {
+    name: 'Riyan Parag',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/189.png',
+  },
+  {
+    name: 'Sandeep Sharma',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/220.png',
+  },
+  {
+    name: 'Rajat Patidar',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/597.png',
+  },
+  {
+    name: 'Virat Kohli',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/2.png',
+  },
+  {
+    name: 'Swapnil Singh',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1483.png',
+  },
+  {
+    name: 'Yash Dayal',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/978.png',
+  },
+  {
+    name: 'Heinrich Klaasen',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/202.png',
+  },
+  {
+    name: 'Travis Head',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/37.png',
+  },
+  {
+    name: 'Abhishek Sharma',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/212.png',
+  },
+  {
+    name: 'Nitish Kumar Reddy',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/1944.png',
+  },
+  {
+    name: 'Jaydev Unadkat',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/180.png',
+  },
+  {
+    name: 'Pat Cummins',
+    img: 'https://documents.iplt20.com/ipl/IPLHeadshot2024/33.png',
+  },
+];
 
 // function extractPlayerData() {
 //     // Select all player cards
 //     const playerCards = document.querySelectorAll('.ih-pcard1');
-    
+
 //     // Array to store player data
 //     const players = [];
-    
+
 //     // Default headshot image to exclude
 //     const defaultHeadshot = 'https://www.iplt20.com/assets/images/default-headshot.png';
-    
+
 //     // Iterate through each player card
 //     playerCards.forEach(card => {
 //       // Get the image element
 //       const imgElement:any = card.querySelector('.ih-p-img img');
-      
+
 //       // Get the name element
 //       const nameElement = card.querySelector('.ih-p-name h2');
-      
+
 //       // If both elements exist
 //       if (imgElement && nameElement) {
 //         // Get image source (either from src or data-src attribute)
 //         const imgSrc = imgElement.src || imgElement.dataset.src;
-        
+
 //         // Only add player if they don't have the default headshot
 //         if (imgSrc && imgSrc !== defaultHeadshot) {
 //           players.push({
@@ -327,10 +325,428 @@ export const playerdetails = [
 //         }
 //       }
 //     });
-    
+
 //     return players;
 //   }
-  
+
 //   // Example usage:
 //   const playerData = extractPlayerData();
 //   console.log(playerData);
+
+export const debut_year = [
+  { name: 'Ruturaj Gaikwad', debut_year: 2020 },
+  { name: 'Noor Ahmad', debut_year: 2022 },
+  { name: 'Khaleel Ahmed', debut_year: 2018 },
+  { name: 'Ravichandaran Ashwin', debut_year: 2009 },
+  { name: 'Vansh Bedi', debut_year: 2025 },
+  { name: 'Mukesh Choudhary', debut_year: 2022 },
+  { name: 'Devon Conway', debut_year: 2022 },
+  { name: 'Sam Curran', debut_year: 2019 },
+  { name: 'Mahendra Singh Dhoni', debut_year: 2008 },
+  { name: 'Shivam Dube', debut_year: 2019 },
+  { name: 'Nathan Ellis', debut_year: 2022 },
+  { name: 'Ramakrishna Ghosh', debut_year: 2025 },
+  { name: 'Shreyas Gopal', debut_year: 2014 },
+  { name: 'Deepak Hooda', debut_year: 2015 },
+  { name: 'Ravindra Jadeja', debut_year: 2008 },
+  { name: 'Anshul Kamboj', debut_year: 2025 },
+  { name: 'Kamlesh Nagarkoti', debut_year: 2018 },
+  { name: 'Jamie Overton', debut_year: 2025 },
+  { name: 'Matheesha Pathirana', debut_year: 2022 },
+  { name: 'Shaik Rasheed', debut_year: 2025 },
+  { name: 'Rachin Ravindra', debut_year: 2025 },
+  { name: 'Vijay Shankar', debut_year: 2014 },
+  { name: 'Andre Siddarth', debut_year: 2025 },
+  { name: 'Gurjapneet Singh', debut_year: 2025 },
+  { name: 'Rahul Tripathi', debut_year: 2017 },
+  { name: 'Harry Brook', debut_year: 2023 },
+  { name: 'Dushmantha Chameera', debut_year: 2018 },
+  { name: 'Faf du Plessis', debut_year: 2012 },
+  { name: 'Donovan Ferreira', debut_year: 2025 },
+  { name: 'Jake Fraser-McGurk', debut_year: 2025 },
+  { name: 'Mukesh Kumar', debut_year: 2023 },
+  { name: 'Manvanth Kumar', debut_year: 2025 },
+  { name: 'Ajay Mandal', debut_year: 2025 },
+  { name: 'Karun Nair', debut_year: 2013 },
+  { name: 'Darshan Nalkande', debut_year: 2021 },
+  { name: 'T. Natarajan', debut_year: 2017 },
+  { name: 'Vipraj Nigam', debut_year: 2025 },
+  { name: 'Axar Patel', debut_year: 2014 },
+  { name: 'Abishek Porel', debut_year: 2023 },
+  { name: 'KL Rahul', debut_year: 2013 },
+  { name: 'Sameer Rizvi', debut_year: 2025 },
+  { name: 'Ashutosh Sharma', debut_year: 2025 },
+  { name: 'Mohit Sharma', debut_year: 2013 },
+  { name: 'Mitchell Starc', debut_year: 2014 },
+  { name: 'Madhav Tiwari', debut_year: 2025 },
+  { name: 'Tristan Stubbs', debut_year: 2022 },
+  { name: 'Tripurana Vijay', debut_year: 2025 },
+  { name: 'Kuldeep Yadav', debut_year: 2016 },
+  { name: 'Shubman Gill', debut_year: 2018 },
+  { name: 'Gurnoor Singh Brar', debut_year: 2025 },
+  { name: 'Jos Buttler', debut_year: 2016 },
+  { name: 'Gerald Coetzee', debut_year: 2025 },
+  { name: 'Karim Janat', debut_year: 2025 },
+  { name: 'Arshad Khan', debut_year: 2022 },
+  { name: 'Rashid Khan', debut_year: 2017 },
+  { name: 'Shahrukh Khan', debut_year: 2021 },
+  { name: 'Kulwant Khejroliya', debut_year: 2018 },
+  { name: 'Sai Kishore', debut_year: 2022 },
+  { name: 'Prasidh Krishna', debut_year: 2018 },
+  { name: 'Kumar Kushagra', debut_year: 2025 },
+  { name: 'Mahipal Lomror', debut_year: 2018 },
+  { name: 'Glenn Phillips', debut_year: 2021 },
+  { name: 'Kagiso Rabada', debut_year: 2017 },
+  { name: 'Anuj Rawat', debut_year: 2021 },
+  { name: 'Sherfane Rutherford', debut_year: 2019 },
+  { name: 'Ishant Sharma', debut_year: 2008 },
+  { name: 'Nishant Sindhu', debut_year: 2025 },
+  { name: 'Mohammad Siraj', debut_year: 2017 },
+  { name: 'Sai Sudharsan', debut_year: 2022 },
+  { name: 'Washington Sundar', debut_year: 2017 },
+  { name: 'Manav Suthar', debut_year: 2025 },
+  { name: 'Rahul Tewatia', debut_year: 2014 },
+  { name: 'Jayant Yadav', debut_year: 2015 },
+  { name: 'Rinku Singh', debut_year: 2018 },
+  { name: 'Quinton de Kock', debut_year: 2013 },
+  { name: 'Rahmanullah Gurbaz', debut_year: 2022 },
+  { name: 'Angkrish Raghuvanshi', debut_year: 2025 },
+  { name: 'Venkatesh Iyer', debut_year: 2021 },
+  { name: 'Ramandeep Singh', debut_year: 2022 },
+  { name: 'Andre Russell', debut_year: 2012 },
+  { name: 'Anrich Nortje', debut_year: 2019 },
+  { name: 'Harshit Rana', debut_year: 2022 },
+  { name: 'Sunil Narine', debut_year: 2012 },
+  { name: 'Varun Chakravarthy', debut_year: 2019 },
+  { name: 'Vaibhav Arora', debut_year: 2022 },
+  { name: 'Mayank Markande', debut_year: 2018 },
+  { name: 'Rovman Powell', debut_year: 2022 },
+  { name: 'Manish Pandey', debut_year: 2008 },
+  { name: 'Spencer Johnson', debut_year: 2025 },
+  { name: 'Luvnith Sisodia', debut_year: 2025 },
+  { name: 'Ajinkya Rahane', debut_year: 2008 },
+  { name: 'Anukul Roy', debut_year: 2019 },
+  { name: 'Moeen Ali', debut_year: 2018 },
+  { name: 'Umran Malik', debut_year: 2021 },
+  { name: 'Rishabh Pant', debut_year: 2016 },
+  { name: 'David Miller', debut_year: 2012 },
+  { name: 'Aiden Markram', debut_year: 2022 },
+  { name: 'Nicholas Pooran', debut_year: 2017 },
+  { name: 'Mitchell Marsh', debut_year: 2010 },
+  { name: 'Avesh Khan', debut_year: 2017 },
+  { name: 'Mayank Yadav', debut_year: 2025 },
+  { name: 'Mohsin Khan', debut_year: 2022 },
+  { name: 'Ravi Bishnoi', debut_year: 2020 },
+  { name: 'Abdul Samad', debut_year: 2020 },
+  { name: 'Aryan Juyal', debut_year: 2025 },
+  { name: 'Akash Deep', debut_year: 2022 },
+  { name: 'Himmat Singh', debut_year: 2019 },
+  { name: 'M. Siddharth', debut_year: 2021 },
+  { name: 'Digvesh Singh', debut_year: 2025 },
+  { name: 'Shahbaz Ahamad', debut_year: 2020 },
+  { name: 'Akash Singh', debut_year: 2021 },
+  { name: 'Shamar Joseph', debut_year: 2025 },
+  { name: 'Prince Yadav', debut_year: 2025 },
+  { name: 'Yuvraj Chaudhary', debut_year: 2025 },
+  { name: 'Rajvardhan Hangargekar', debut_year: 2025 },
+  { name: 'Arshin Kulkarni', debut_year: 2025 },
+  { name: 'Matthew Breetzke', debut_year: 2025 },
+  { name: 'Hardik Pandya', debut_year: 2015 },
+  { name: 'Jasprit Bumrah', debut_year: 2013 },
+  { name: 'Rohit Sharma', debut_year: 2008 },
+  { name: 'Tilak Varma', debut_year: 2022 },
+  { name: 'Trent Boult', debut_year: 2015 },
+  { name: 'Naman Dhir', debut_year: 2025 },
+  { name: 'Robin Minz', debut_year: 2025 },
+  { name: 'Karn Sharma', debut_year: 2009 },
+  { name: 'Ryan Rickelton', debut_year: 2025 },
+  { name: 'Deepak Chahar', debut_year: 2016 },
+  { name: 'Allah Ghazanfar', debut_year: 2025 },
+  { name: 'Will Jacks', debut_year: 2023 },
+  { name: 'Ashwani Kumar', debut_year: 2025 },
+  { name: 'Mitchell Santner', debut_year: 2019 },
+  { name: 'Reece Topley', debut_year: 2023 },
+  { name: 'Shrijith Krishnan', debut_year: 2025 },
+  { name: 'Raj Angad Bawa', debut_year: 2022 },
+  { name: 'Venkata Satyanarayana Penmetsa', debut_year: 2025 },
+  { name: 'Bevan John Jacobs', debut_year: 2025 },
+  { name: 'Arjun Tendulkar', debut_year: 2023 },
+  { name: 'Lizaad Williams', debut_year: 2025 },
+  { name: 'Vignesh Puthur', debut_year: 2025 },
+  { name: 'Suryakumar Yadav', debut_year: 2012 },
+  { name: 'Shreyas Iyer', debut_year: 2015 },
+  { name: 'Yuzvendra Chahal', debut_year: 2013 },
+  { name: 'Arshdeep Singh', debut_year: 2019 },
+  { name: 'Marcus Stoinis', debut_year: 2016 },
+  { name: 'Glenn Maxwell', debut_year: 2012 },
+  { name: 'Shashank Singh', debut_year: 2022 },
+  { name: 'Prabhsimran Singh', debut_year: 2019 },
+  { name: 'Harpreet Brar', debut_year: 2019 },
+  { name: 'Vyshak Vijaykumar', debut_year: 2023 },
+  { name: 'Yash Thakur', debut_year: 2023 },
+  { name: 'Marco Jansen', debut_year: 2021 },
+  { name: 'Josh Inglis', debut_year: 2022 },
+  { name: 'Lockie Ferguson', debut_year: 2017 },
+  { name: 'Azmatullah Omarzai', debut_year: 2025 },
+  { name: 'Harnoor Pannu', debut_year: 2025 },
+  { name: 'Kuldeep Sen', debut_year: 2022 },
+  { name: 'Priyansh Arya', debut_year: 2025 },
+  { name: 'Aaron Hardie', debut_year: 2025 },
+  { name: 'Musheer Khan', debut_year: 2025 },
+  { name: 'Suryansh Shedge', debut_year: 2025 },
+  { name: 'Xavier Bartlett', debut_year: 2025 },
+  { name: 'Pyla Avinash', debut_year: 2025 },
+  { name: 'Pravin Dubey', debut_year: 2020 },
+  { name: 'Nehal Wadhera', debut_year: 2023 },
+  { name: 'Sanju Samson', debut_year: 2013 },
+  { name: 'Yashasvi Jaiswal', debut_year: 2020 },
+  { name: 'Riyan Parag', debut_year: 2019 },
+  { name: 'Dhruv Jurel', debut_year: 2023 },
+  { name: 'Shimron Hetmyer', debut_year: 2019 },
+  { name: 'Sandeep Sharma', debut_year: 2013 },
+  { name: 'Jofra Archer', debut_year: 2018 },
+  { name: 'Wanindu Hasaranga', debut_year: 2021 },
+  { name: 'Maheesh Theekshana', debut_year: 2022 },
+  { name: 'Akash Madhwal', debut_year: 2023 },
+  { name: 'Kumar Kartikeya Singh', debut_year: 2022 },
+  { name: 'Nitish Rana', debut_year: 2016 },
+  { name: 'Tushar Deshpande', debut_year: 2020 },
+  { name: 'Shubham Dubey', debut_year: 2025 },
+  { name: 'Yudhvir Charak', debut_year: 2023 },
+  { name: 'Fazalhaq Farooqi', debut_year: 2022 },
+  { name: 'Vaibhav Suryavanshi', debut_year: 2025 },
+  { name: 'Kwena Maphaka', debut_year: 2025 },
+  { name: 'Kunal Rathore', debut_year: 2025 },
+  { name: 'Ashok Sharma', debut_year: 2025 },
+  { name: 'Virat Kohli', debut_year: 2008 },
+  { name: 'Rajat Patidar', debut_year: 2021 },
+  { name: 'Yash Dayal', debut_year: 2022 },
+  { name: 'Josh Hazlewood', debut_year: 2012 },
+  { name: 'Phil Salt', debut_year: 2023 },
+  { name: 'Jitesh Sharma', debut_year: 2022 },
+  { name: 'Liam Livingstone', debut_year: 2019 },
+  { name: 'Rasikh Dar', debut_year: 2019 },
+  { name: 'Suyash Sharma', debut_year: 2023 },
+  { name: 'Krunal Pandya', debut_year: 2016 },
+  { name: 'Bhuvneshwar Kumar', debut_year: 2011 },
+  { name: 'Swapnil Singh', debut_year: 2009 },
+  { name: 'Tim David', debut_year: 2021 },
+  { name: 'Romario Shepherd', debut_year: 2022 },
+  { name: 'Nuwan Thushara', debut_year: 2025 },
+  { name: 'Manoj Bhandage', debut_year: 2025 },
+  { name: 'Jacob Bethell', debut_year: 2025 },
+  { name: 'Devdutt Padikkal', debut_year: 2020 },
+  { name: 'Swastik Chhikara', debut_year: 2025 },
+  { name: 'Lungisani Ngidi', debut_year: 2018 },
+  { name: 'Abhinandan Singh', debut_year: 2025 },
+  { name: 'Mohit Rathee', debut_year: 2025 },
+  { name: 'Ishan Kishan', debut_year: 2016 },
+  { name: 'Atharva Taide', debut_year: 2023 },
+  { name: 'Abhinav Manohar', debut_year: 2022 },
+  { name: 'Aniket Verma', debut_year: 2025 },
+  { name: 'Sachin Baby', debut_year: 2011 },
+  { name: 'Heinrich Klaasen', debut_year: 2018 },
+  { name: 'Travis Head', debut_year: 2016 },
+  { name: 'Harshal Patel', debut_year: 2012 },
+  { name: 'Kamindu Mendis', debut_year: 2025 },
+  { name: 'Wiaan Mulder', debut_year: 2025 },
+  { name: 'Abhishek Sharma', debut_year: 2018 },
+  { name: 'Nitish Kumar Reddy', debut_year: 2025 },
+  { name: 'Pat Cummins', debut_year: 2014 },
+  { name: 'Mohammad Shami', debut_year: 2013 },
+  { name: 'Bhuvneshwar Kumar', debut_year: 2011 },
+  { name: 'Fazalhaq Farooqi', debut_year: 2022 },
+  { name: 'Jaydev Unadkat', debut_year: 2010 },
+  { name: 'T. Natarajan', debut_year: 2017 },
+  { name: 'Umran Malik', debut_year: 2021 },
+  { name: 'Akash Singh', debut_year: 2021 },
+  { name: 'Shahbaz Ahamad', debut_year: 2020 },
+  { name: 'Wanindu Hasaranga', debut_year: 2021 },
+  { name: 'Washington Sundar', debut_year: 2017 },
+];
+export const player_from = [
+  { name: 'Rishabh Pant', country: 'India' },
+  { name: 'Shreyas Iyer', country: 'India' },
+  { name: 'Jos Buttler', country: 'England' },
+  { name: 'Mitchell Starc', country: 'Australia' },
+  { name: 'Andre Russell', country: 'West Indies' },
+  { name: 'Kagiso Rabada', country: 'South Africa' },
+  { name: 'Jofra Archer', country: 'England' },
+  { name: 'KL Rahul', country: 'India' },
+  { name: 'Axar Patel', country: 'India' },
+  { name: 'Kuldeep Yadav', country: 'India' },
+  { name: 'David Warner', country: 'Australia' },
+  { name: 'Glenn Maxwell', country: 'Australia' },
+  { name: 'Pat Cummins', country: 'Australia' },
+  { name: 'Travis Head', country: 'Australia' },
+  { name: 'Cameron Green', country: 'Australia' },
+  { name: 'Nitish Kumar Reddy', country: 'India' },
+  { name: 'Venkatesh Iyer', country: 'India' },
+  { name: 'Mitchell Marsh', country: 'Australia' },
+  { name: 'Harshal Patel', country: 'India' },
+  { name: 'Abdul Samad', country: 'India' },
+  { name: 'Vijay Shankar', country: 'India' },
+  { name: 'Ashutosh Sharma', country: 'India' },
+  { name: 'Nishant Sindhu', country: 'India' },
+  { name: 'Krunal Pandya', country: 'India' },
+  { name: 'Washington Sundar', country: 'India' },
+  { name: 'Josh Inglis', country: 'Australia' },
+  { name: 'Ryan Rickelton', country: 'South Africa' },
+  { name: 'Deepak Chahar', country: 'India' },
+  { name: 'Gerald Coetzee', country: 'South Africa' },
+  { name: 'Akash Deep', country: 'India' },
+  { name: 'Allah Ghazanfar', country: 'Afghanistan' },
+  { name: 'Swastik Chikara', country: 'India' },
+  { name: 'Shubham Dubey', country: 'India' },
+  { name: 'Shaik Rasheed', country: 'India' },
+  { name: 'Himmat Singh', country: 'India' },
+  { name: 'Anshul Kamboj', country: 'India' },
+  { name: 'Mohd. Arshad Khan', country: 'India' },
+  { name: 'Darshan Nalkande', country: 'India' },
+  { name: 'Anukul Roy', country: 'India' },
+  { name: 'Mukesh Choudhary', country: 'India' },
+  { name: 'Arjun Tendulkar', country: 'India' },
+  { name: 'Zeeshan Ansari', country: 'India' },
+  { name: 'Manimaran Siddharth', country: 'India' },
+  { name: 'Manish Pandey', country: 'India' },
+  { name: 'Sherfane Rutherford', country: 'West Indies' },
+  { name: 'Shahbaz Ahmed', country: 'India' },
+  { name: 'Tim David', country: 'Australia' },
+  { name: 'Deepak Hooda', country: 'India' },
+  { name: 'Will Jacks', country: 'England' },
+  { name: 'Azmatullah Omarzai', country: 'Afghanistan' },
+  { name: 'Sai Kishore', country: 'India' },
+  { name: 'Yudhvir Charak', country: 'India' },
+  { name: 'Rajvardhan Hangargekar', country: 'India' },
+  { name: 'Arshin Kulkarni', country: 'India' },
+  { name: 'Ashwani Kumar', country: 'India' },
+  { name: 'Akash Singh', country: 'India' },
+  { name: 'Gurjapneet Singh', country: 'India' },
+  { name: 'Matthew Breetzke', country: 'South Africa' },
+  { name: 'Mitchell Santner', country: 'New Zealand' },
+  { name: 'Jayant Yadav', country: 'India' },
+  { name: 'Kamindu Mendis', country: 'Sri Lanka' },
+  { name: 'Dushmantha Chameera', country: 'Sri Lanka' },
+  { name: 'Nathan Ellis', country: 'Australia' },
+  { name: 'Shamar Joseph', country: 'West Indies' },
+  { name: 'Aniket Verma', country: 'India' },
+  { name: 'Yash Dayal', country: 'India' },
+  { name: 'Josh Hazlewood', country: 'Australia' },
+  { name: 'Bhuvneshwar Kumar', country: 'India' },
+  { name: 'Liam Livingstone', country: 'England' },
+  { name: 'Lungi Ngidi', country: 'South Africa' },
+  { name: 'Devdutt Padikkal', country: 'India' },
+  { name: 'Krunal Pandya', country: 'India' },
+  { name: 'Rajat Patidar', country: 'India' },
+  { name: 'Mohit Rathee', country: 'India' },
+  { name: 'Phil Salt', country: 'England' },
+  { name: 'Jitesh Sharma', country: 'India' },
+  { name: 'Suyash Sharma', country: 'India' },
+  { name: 'Romario Shepherd', country: 'West Indies' },
+  { name: 'Abhinandan Singh', country: 'India' },
+  { name: 'Swapnil Singh', country: 'India' },
+  { name: 'Nuwan Thushara', country: 'Sri Lanka' },
+  { name: 'Pat Cummins', country: 'Australia' },
+  { name: 'Zeeshan Ansari', country: 'India' },
+  { name: 'Sachin Baby', country: 'India' },
+  { name: 'Brydon Carse', country: 'England' },
+  { name: 'Rahul Chahar', country: 'India' },
+  { name: 'Travis Head', country: 'Australia' },
+  { name: 'Ishan Kishan', country: 'India' },
+  { name: 'Heinrich Klaasen', country: 'South Africa' },
+  { name: 'Eshan Malinga', country: 'Sri Lanka' },
+  { name: 'Abhinav Manohar', country: 'India' },
+  { name: 'Kamindu Mendis', country: 'Sri Lanka' },
+  { name: 'Harshal Patel', country: 'India' },
+  { name: 'Nitish Kumar Reddy', country: 'India' },
+  { name: 'Mohammad Shami', country: 'India' },
+  { name: 'Abhishek Sharma', country: 'India' },
+  { name: 'Simarjeet Singh', country: 'India' },
+  { name: 'Atharva Taide', country: 'India' },
+  { name: 'Jaydev Unadkat', country: 'India' },
+  { name: 'Aniket Verma', country: 'India' },
+  { name: 'Adam Zampa', country: 'Australia' },
+  { name: 'Rishabh Pant', country: 'India' },
+  { name: 'Shreyas Iyer', country: 'India' },
+  { name: 'Jos Buttler', country: 'England' },
+  { name: 'Mitchell Starc', country: 'Australia' },
+  { name: 'Andre Russell', country: 'West Indies' },
+  { name: 'Kagiso Rabada', country: 'South Africa' },
+  { name: 'Jofra Archer', country: 'England' },
+  { name: 'Virat Kohli', country: 'India' },
+  { name: 'Jacob Bethell', country: 'England' },
+  { name: 'Manoj Bhandage', country: 'India' },
+  { name: 'Swastik Chikara', country: 'India' },
+  { name: 'Rasikh Salam Dar', country: 'India' },
+  { name: 'Jake Fraser-McGurk', country: 'Australia' },
+  { name: 'Mukesh Kumar', country: 'India' },
+  { name: 'Harry Brook', country: 'England' },
+  { name: 'Abishek Porel', country: 'India' },
+  { name: 'Mohit Sharma', country: 'India' },
+  { name: 'Faf du Plessis', country: 'South Africa' },
+  { name: 'Sameer Rizvi', country: 'India' },
+  { name: 'Donovan Ferreira', country: 'South Africa' },
+  { name: 'Karun Nair', country: 'India' },
+  { name: 'Vipraj Nigam', country: 'India' },
+  { name: 'Madhav Tiwari', country: 'India' },
+  { name: 'Ajay Mandal', country: 'India' },
+  { name: 'Manvanth Kumar L', country: 'India' },
+  { name: 'Tripurana Vijay', country: 'India' },
+  { name: 'Rashid Khan', country: 'Afghanistan' },
+  { name: 'Sai Sudharsan', country: 'India' },
+  { name: 'Rahul Tewatia', country: 'India' },
+  { name: 'Gurnoor Singh Brar', country: 'India' },
+  { name: 'Kumar Kushagra', country: 'India' },
+  { name: 'Anuj Rawat', country: 'India' },
+  { name: 'Manav Suthar', country: 'India' },
+  { name: 'Ishant Sharma', country: 'India' },
+  { name: 'Karim Janat', country: 'Afghanistan' },
+  { name: 'Mohammad Siraj', country: 'India' },
+  { name: 'Glenn Phillips', country: 'New Zealand' },
+  { name: 'Angkrish Raghuvanshi', country: 'India' },
+  { name: 'Luvnith Sisodia', country: 'India' },
+  { name: 'Mayank Markande', country: 'India' },
+  { name: 'Vaibhav Arora', country: 'India' },
+  { name: 'Umran Malik', country: 'India' },
+  { name: 'Moeen Ali', country: 'England' },
+  { name: 'Spencer Johnson', country: 'Australia' },
+  { name: 'David Miller', country: 'South Africa' },
+  { name: 'Shahbaz Ahamad', country: 'India' },
+  { name: 'Aiden Markram', country: 'South Africa' },
+  { name: 'M. Siddharth', country: 'India' },
+  { name: 'Aryan Juyal', country: 'India' },
+  { name: 'Digvesh Singh', country: 'India' },
+  { name: 'Prince Yadav', country: 'India' },
+  { name: 'Yuvraj Chaudhary', country: 'India' },
+  { name: 'Bevan John Jacobs', country: 'South Africa' },
+  { name: 'Hardik Pandya', country: 'India' },
+  { name: 'Lizaad Williams', country: 'South Africa' },
+  { name: 'Naman Dhir', country: 'India' },
+  { name: 'Raj Angad Bawa', country: 'India' },
+  { name: 'Reece Topley', country: 'England' },
+  { name: 'Robin Minz', country: 'India' },
+  { name: 'Shrijith Krishnan', country: 'India' },
+  { name: 'Venkata Satyanarayana Penmetsa', country: 'India' },
+  { name: 'Vignesh Puthur', country: 'India' },
+  { name: 'Aaron Hardie', country: 'Australia' },
+  { name: 'Harnoor Pannu', country: 'India' },
+  { name: 'Marco Jansen', country: 'South Africa' },
+  { name: 'Musheer Khan', country: 'India' },
+  { name: 'Pravin Dubey', country: 'India' },
+  { name: 'Priyansh Arya', country: 'India' },
+  { name: 'Pyla Avinash', country: 'India' },
+  { name: 'Shashank Singh', country: 'India' },
+  { name: 'Suryansh Shedge', country: 'India' },
+  { name: 'Vyshak Vijaykumar', country: 'India' },
+  { name: 'Xavier Bartlett', country: 'Australia' },
+  { name: 'Ashok Sharma', country: 'India' },
+  { name: 'Fazalhaq Farooqi', country: 'Afghanistan' },
+  { name: 'Kwena Maphaka', country: 'South Africa' },
+  { name: 'Maheesh Theekshana', country: 'Sri Lanka' },
+  { name: 'Sandeep Sharma', country: 'India' },
+  { name: 'Tushar Deshpande', country: 'India' },
+  { name: 'Wanindu Hasaranga', country: 'Sri Lanka' },
+  { name: 'Lungisani Ngidi', country: 'South Africa' },
+  { name: 'Rasikh Dar', country: 'India' },
+  { name: 'Wiaan Mulder', country: 'South Africa' },
+];

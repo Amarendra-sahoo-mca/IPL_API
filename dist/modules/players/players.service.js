@@ -22,10 +22,12 @@ const excel_service_1 = require("../../utils/globalServices/excel.service");
 const team_entity_1 = require("../../entities/team.entity");
 const typeorm_2 = require("typeorm");
 const playerinfo_1 = require("../../utils/data/playerinfo");
+const points_entity_1 = require("../../entities/points.entity");
 let playersService = class playersService {
-    constructor(repository, teamRepository, excelService) {
+    constructor(repository, teamRepository, pointRepository, excelService) {
         this.repository = repository;
         this.teamRepository = teamRepository;
+        this.pointRepository = pointRepository;
         this.excelService = excelService;
     }
     async findAll(queryParams) {
@@ -39,10 +41,14 @@ let playersService = class playersService {
             if (queryParams.skill) {
                 where.designation = queryParams.skill;
             }
-            const totalData = await this.repository.createQueryBuilder('player').where(where).getMany();
+            const totalData = await this.repository
+                .createQueryBuilder('player')
+                .where(where)
+                .getMany();
             const res = this.repository
                 .createQueryBuilder('player')
-                .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id').where(where);
+                .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id')
+                .where(where);
             if (pagination.skip) {
                 res.skip(pagination.skip);
             }
@@ -82,6 +88,74 @@ let playersService = class playersService {
                 });
                 if (res) {
                     res.photo = item.img;
+                    await this.repository.update(res.id, res);
+                    ++count;
+                }
+                else {
+                    console.log(item.name);
+                }
+            }));
+            console.log('total image count', playerinfo_1.playerdetails.length);
+            return {
+                statusCode: common_1.HttpStatus.OK,
+                success: true,
+                message: `${count} players image set successfully`,
+                data: null,
+            };
+        }
+        catch (err) {
+            const response = {
+                statusCode: common_1.HttpStatus.BAD_REQUEST,
+                success: false,
+                message: `no data found`,
+                data: err,
+            };
+            return response;
+        }
+    }
+    async setdebut() {
+        let count = 0;
+        try {
+            await Promise.all(playerinfo_1.debut_year.map(async (item) => {
+                const res = await this.repository.findOne({
+                    where: { name: (0, typeorm_2.Like)(`%${item.name}%`) },
+                });
+                if (res) {
+                    res.debut_year = item.debut_year;
+                    await this.repository.update(res.id, res);
+                    ++count;
+                }
+                else {
+                    console.log(item.name);
+                }
+            }));
+            console.log('total image count', playerinfo_1.playerdetails.length);
+            return {
+                statusCode: common_1.HttpStatus.OK,
+                success: true,
+                message: `${count} players image set successfully`,
+                data: null,
+            };
+        }
+        catch (err) {
+            const response = {
+                statusCode: common_1.HttpStatus.BAD_REQUEST,
+                success: false,
+                message: `no data found`,
+                data: err,
+            };
+            return response;
+        }
+    }
+    async setnetionality() {
+        let count = 0;
+        try {
+            await Promise.all(playerinfo_1.player_from.map(async (item) => {
+                const res = await this.repository.findOne({
+                    where: { name: (0, typeorm_2.Like)(`%${item.name}%`) },
+                });
+                if (res) {
+                    res.from = item.country;
                     await this.repository.update(res.id, res);
                     ++count;
                 }
@@ -273,6 +347,65 @@ let playersService = class playersService {
                 data: null,
             };
     }
+    async findTop() {
+        try {
+            const response = await this.repository
+                .createQueryBuilder('player')
+                .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id')
+                .orderBy('player.sell_price', 'DESC')
+                .limit(10)
+                .getMany();
+            return {
+                statusCode: common_1.HttpStatus.OK,
+                success: true,
+                message: `players top 10`,
+                data: response,
+            };
+        }
+        catch (err) {
+            throw err;
+        }
+    }
+    async orangecap() {
+        try {
+            const response = await this.repository
+                .createQueryBuilder('player')
+                .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id')
+                .orderBy('player.runs', 'DESC')
+                .addOrderBy('player.strike_rate', "DESC")
+                .limit(10)
+                .getMany();
+            return {
+                statusCode: common_1.HttpStatus.OK,
+                success: true,
+                message: `players top 10 in orange_cap list`,
+                data: response,
+            };
+        }
+        catch (err) {
+            throw err;
+        }
+    }
+    async purplecap() {
+        try {
+            const response = await this.repository
+                .createQueryBuilder('player')
+                .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id')
+                .orderBy('player.wickets', 'DESC')
+                .addOrderBy('player.economy', "ASC")
+                .limit(10)
+                .getMany();
+            return {
+                statusCode: common_1.HttpStatus.OK,
+                success: true,
+                message: `players top 10 in purple_cap list`,
+                data: response,
+            };
+        }
+        catch (err) {
+            throw err;
+        }
+    }
     async save(Dtos, files) {
         try {
             if (files[0]) {
@@ -303,7 +436,9 @@ exports.playersService = playersService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(player_entity_1.playersEntity)),
     __param(1, (0, typeorm_1.InjectRepository)(team_entity_1.TeamEntity)),
+    __param(2, (0, typeorm_1.InjectRepository)(points_entity_1.PointEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository,
         typeorm_2.Repository,
         excel_service_1.ExcelService])
 ], playersService);

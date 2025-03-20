@@ -17,8 +17,13 @@ import { playersEntity } from 'src/entities/player.entity';
 import { ExcelService } from 'src/utils/globalServices/excel.service';
 import { TeamEntity } from 'src/entities/team.entity';
 import { FindOptionsWhere, Like, Repository } from 'typeorm';
-import { playerdetails } from 'src/utils/data/playerinfo';
+import {
+  playerdetails,
+  debut_year,
+  player_from,
+} from 'src/utils/data/playerinfo';
 import { FilterDTO } from './filter.dto';
+import { PointEntity } from 'src/entities/points.entity';
 
 @Injectable()
 export class playersService {
@@ -27,11 +32,24 @@ export class playersService {
     private repository: Repository<playersEntity>,
     @InjectRepository(TeamEntity)
     private teamRepository: Repository<TeamEntity>,
+    @InjectRepository(PointEntity)
+    private pointRepository: Repository<PointEntity>,
     private readonly excelService: ExcelService,
   ) {}
+  // async findNull(){
+  //   const res = await this.repository.createQueryBuilder('pl')
+  //   .where('pl.from = :name',{name:""})
+  //   .getMany();
+  //   console.log(res.length);
 
+  //  const res2 = res.map((item:any)=>{
+  //   return {name:item.name};
+  //   })
+  //   return res2
+  // }
   async findAll(queryParams: FilterDTO) {
     try {
+      
       const where: FindOptionsWhere<any> = {};
       const pagination = applyPagination(queryParams.page);
       const order = applySorting(
@@ -39,14 +57,17 @@ export class playersService {
         queryParams.sortOrder,
         playersEntity,
       );
-     
+
       if (queryParams.name) {
         where.name = Like(`%${queryParams.name}%`);
       }
       if (queryParams.skill) {
         where.designation = queryParams.skill;
       }
-      const totalData = await this.repository.createQueryBuilder('player').where(where).getMany();
+      const totalData = await this.repository
+        .createQueryBuilder('player')
+        .where(where)
+        .getMany();
       const res = this.repository
         .createQueryBuilder('player')
         .innerJoinAndMapOne(
@@ -54,8 +75,9 @@ export class playersService {
           TeamEntity,
           'team',
           'player.team_buy = team.id',
-        ).where(where);
-       
+        )
+        .where(where);
+
       if (pagination.skip) {
         res.skip(pagination.skip);
       }
@@ -73,7 +95,7 @@ export class playersService {
         statusCode: HttpStatus.OK,
         success: true,
         message: `players`,
-        totaldata:totalData.length,
+        totaldata: totalData.length,
         data: response,
       } as any;
     } catch (err: any) {
@@ -96,6 +118,78 @@ export class playersService {
           });
           if (res) {
             res.photo = item.img;
+            await this.repository.update(res.id, res);
+            ++count;
+          } else {
+            console.log(item.name);
+          }
+        }),
+      );
+
+      console.log('total image count', playerdetails.length);
+
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `${count} players image set successfully`,
+        data: null,
+      } as IResponse;
+    } catch (err: any) {
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `no data found`,
+        data: err,
+      };
+      return response;
+    }
+  }
+  async setdebut() {
+    let count = 0;
+    try {
+      await Promise.all(
+        debut_year.map(async (item: any) => {
+          const res = await this.repository.findOne({
+            where: { name: Like(`%${item.name}%`) },
+          });
+          if (res) {
+            res.debut_year = item.debut_year;
+            await this.repository.update(res.id, res);
+            ++count;
+          } else {
+            console.log(item.name);
+          }
+        }),
+      );
+
+      console.log('total image count', playerdetails.length);
+
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `${count} players image set successfully`,
+        data: null,
+      } as IResponse;
+    } catch (err: any) {
+      const response: IResponse = {
+        statusCode: HttpStatus.BAD_REQUEST,
+        success: false,
+        message: `no data found`,
+        data: err,
+      };
+      return response;
+    }
+  }
+  async setnetionality() {
+    let count = 0;
+    try {
+      await Promise.all(
+        player_from.map(async (item: any) => {
+          const res = await this.repository.findOne({
+            where: { name: Like(`%${item.name}%`) },
+          });
+          if (res) {
+            res.from = item.country;
             await this.repository.update(res.id, res);
             ++count;
           } else {
@@ -357,6 +451,80 @@ export class playersService {
           message: `players not found`,
           data: null,
         } as IResponse);
+  }
+  async findTop() {
+    try {
+      const response: any = await this.repository
+        .createQueryBuilder('player')
+        .innerJoinAndMapOne(
+          'player.team',
+          TeamEntity,
+          'team',
+          'player.team_buy = team.id',
+        )
+        .orderBy('player.sell_price', 'DESC')
+        .limit(10)
+        .getMany();
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `players top 10`,
+        data: response,
+      } as IResponse;
+    } catch (err: any) {
+   
+      throw err;
+    }
+  }
+  async orangecap() {
+    try {
+      const response: any = await this.repository
+        .createQueryBuilder('player')
+        .innerJoinAndMapOne(
+          'player.team',
+          TeamEntity,
+          'team',
+          'player.team_buy = team.id',
+        )
+        .orderBy('player.runs', 'DESC')
+        .addOrderBy('player.strike_rate', "DESC")
+        .limit(10)
+        .getMany();
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `players top 10 in orange_cap list`,
+        data: response,
+      } as IResponse;
+    } catch (err: any) {
+   
+      throw err;
+    }
+  }
+  async purplecap() {
+    try {
+      const response: any = await this.repository
+        .createQueryBuilder('player')
+        .innerJoinAndMapOne(
+          'player.team',
+          TeamEntity,
+          'team',
+          'player.team_buy = team.id',
+        )
+        .orderBy('player.wickets', 'DESC')
+        .addOrderBy('player.economy', "ASC")
+        .limit(10)
+        .getMany();
+      return {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: `players top 10 in purple_cap list`,
+        data: response,
+      } as IResponse;
+    } catch (err: any) {
+   
+      throw err;
+    }
   }
 
   async save(Dtos: playersDto, files: Express.Multer.File[]) {

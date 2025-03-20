@@ -6,6 +6,7 @@ import { MatchEntity } from "src/entities/match.entity";
 
 
 import {  playersEntity } from "src/entities/player.entity";
+import { PointEntity } from "src/entities/points.entity";
 import { TeamEntity } from "src/entities/team.entity";
 import { TeamLogoEntity } from "src/entities/teamLogo.entity";
 
@@ -39,7 +40,7 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
             database: process.env.DB_NAME || config.get<string>('DB_NAME'),
             password: process.env.DB_PASSWORD || config.get<string>('DB_PASSWORD'),
             entities: [
-                playersEntity,TeamEntity,TeamLogoEntity,MatchEntity
+                playersEntity,TeamEntity,TeamLogoEntity,MatchEntity,PointEntity
             ],
             extra: {
                 charset: 'utf8mb4_unicode_ci',

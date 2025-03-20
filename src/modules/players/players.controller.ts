@@ -39,7 +39,7 @@ export class playersController{
     @Get("set_player_image")
     @ApiOperation({ summary: "Set players image" })
     getAlll(){
-         return this.terminalService.setimage();
+         return this.terminalService.setnetionality();
     }
 
 
@@ -48,7 +48,29 @@ export class playersController{
     // getAllbyname(@Param('name') name:string,@Query() queryParams: PaginationSortingDTO){
     //      return this.terminalService.findAllbyname(queryParams,name);
     // }
-   
+    
+    @Get('/top10')
+    // @UseGuards(JwtAuthGuard)
+    // @Roles(Role.ADMIN)
+    @ApiOperation({ summary: "List top players" })
+    findTop() {
+        return this.terminalService.findTop();
+    }
+
+    @Get('/orange_cap')
+    // @UseGuards(JwtAuthGuard)
+    // @Roles(Role.ADMIN)
+    @ApiOperation({ summary: "List top players" })
+    findTopruns() {
+        return this.terminalService.orangecap();
+    }
+    @Get('/purplecap')
+    // @UseGuards(JwtAuthGuard)
+    // @Roles(Role.ADMIN)
+    @ApiOperation({ summary: "List top players" })
+    findpurplecap() {
+        return this.terminalService.purplecap();
+    }
 
     @Get(":id")
     // @UseGuards(JwtAuthGuard)
@@ -57,6 +79,8 @@ export class playersController{
     findOne(@Param("id") id:number) {
         return this.terminalService.findOne(id);
     }
+
+    
 
     @Post("create")
     @ApiOperation({ summary: 'Create playerss' })
