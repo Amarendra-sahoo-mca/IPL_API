@@ -9,6 +9,7 @@ export declare class MatchEntity {
     wonTeam: number;
     homeTeamScore: string;
     awayTeamScore: string;
+    win_desc: string;
     created_on: Date;
     modified_on: Date;
 }

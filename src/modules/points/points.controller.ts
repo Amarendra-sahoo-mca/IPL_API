@@ -48,7 +48,7 @@ export class PointsController{
     //     return this.terminalService.save(DTO);
     // }
 
-    @Put("/:id")
+    @Patch("/:id")
     @ApiOperation({ summary: "Update a Points entry" })
     update(@Param("id") id: number, @Body() DTO: PointsDto) {
         return this.terminalService.update(id, DTO);

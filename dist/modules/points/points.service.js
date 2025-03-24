@@ -48,6 +48,8 @@ let PointsService = class PointsService {
         try {
             const response = await this.repository.createQueryBuilder('point')
                 .leftJoinAndMapOne('point.team_data', team_entity_1.TeamEntity, 'team', 'point.team = team.id')
+                .orderBy('point.points', 'DESC')
+                .addOrderBy('CAST(point.run_rate AS DECIMAL)', 'DESC')
                 .getMany();
             return {
                 statusCode: common_1.HttpStatus.OK,
@@ -79,7 +81,8 @@ let PointsService = class PointsService {
                 };
                 return response;
             }
-            const updatedResponse = await this.repository.update(id, dto);
+            const updatedObj = this.repository.merge(user, dto);
+            const updatedResponse = await this.repository.update(id, updatedObj);
             return {
                 statusCode: common_1.HttpStatus.OK,
                 success: true,

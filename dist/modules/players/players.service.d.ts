@@ -7,6 +7,7 @@ import { TeamEntity } from 'src/entities/team.entity';
 import { Repository } from 'typeorm';
 import { FilterDTO } from './filter.dto';
 import { PointEntity } from 'src/entities/points.entity';
+import { playersUpdateDto } from './playersUpdate.dto';
 export declare class playersService {
     private repository;
     private teamRepository;
@@ -19,7 +20,7 @@ export declare class playersService {
     setnetionality(): Promise<IResponse>;
     findAllbyname(queryParams: PaginationSortingDTO, name: string): Promise<IResponse>;
     importFromExcel(file: Express.Multer.File): Promise<any>;
-    update(id: number, userdocumentDTO: playersDto, files: Express.Multer.File[]): Promise<IResponse>;
+    update(id: number, PlayerDTO: playersUpdateDto): Promise<IResponse>;
     findOne(id: number): Promise<IResponse>;
     findTop(): Promise<IResponse>;
     orangecap(): Promise<IResponse>;

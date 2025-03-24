@@ -24,6 +24,7 @@ import {
 } from 'src/utils/data/playerinfo';
 import { FilterDTO } from './filter.dto';
 import { PointEntity } from 'src/entities/points.entity';
+import { playersUpdateDto } from './playersUpdate.dto';
 
 @Injectable()
 export class playersService {
@@ -379,50 +380,39 @@ export class playersService {
 
   async update(
     id: number,
-    userdocumentDTO: playersDto,
-    files: Express.Multer.File[],
+    PlayerDTO: playersUpdateDto,
+    
   ) {
-    const response = await this.findOne(id);
-    const user = response.data;
+    try {
+    const user = await this.repository.findOneBy({id});
 
-    if (!user || user.length == 0) {
+    if (!user ) {
       const response: IResponse = {
         statusCode: HttpStatus.BAD_REQUEST,
         success: false,
-        message: `players Document ${Messages.NOT_FOUND}`,
+        message: `player ${Messages.NOT_FOUND}`,
         data: null,
       };
       return response;
     }
-    try {
-      const filteredDto = Object.fromEntries(
-        Object.entries(userdocumentDTO).filter(
-          ([_, value]) => value !== '' && value !== null,
-        ),
-      );
-
-      const updatedObj = this.repository.merge(user, filteredDto);
-
-      if (files.length > 0) {
-        updatedObj.photo = files[0].path;
-      }
-      // updatedObj.status = 2;
+      const updatedObj = this.repository.merge(user, PlayerDTO);
       const updatedResponse = await this.repository.update(id, updatedObj);
-
       return {
         statusCode: HttpStatus.OK,
         success: true,
-        message: `players ${Messages.UPDATE}`,
+        message: `player ${Messages.UPDATE}`,
         data: updatedResponse,
       };
     } catch (error: any) {
+      console.log(error);
+      
       const response: IResponse = {
         statusCode: HttpStatus.BAD_REQUEST,
         success: false,
         message: `players ${Messages.UPDATE_FAILURE}`,
         data: error,
       };
-      return response;
+      throw response;
     }
   }
 

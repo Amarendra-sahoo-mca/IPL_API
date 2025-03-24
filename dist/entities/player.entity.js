@@ -90,7 +90,7 @@ __decorate([
     (0, typeorm_1.Column)({
         type: "enum",
         enum: common_enum_1.player_status,
-        comment: '0- written, 1- Buy'
+        comment: '1- Buy , 2- written'
     }),
     __metadata("design:type", Number)
 ], playersEntity.prototype, "status", void 0);

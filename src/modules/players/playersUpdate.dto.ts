@@ -1,48 +1,48 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiPropertyOptional } from "@nestjs/swagger";
 
 
-export class MatchDto{
-    @ApiProperty({
+export class playersUpdateDto{
+    @ApiPropertyOptional({
         description: `name`,
     })
     name:string;
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         description: `base_price`,
     })
     base_price:number;
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         description: `sell_price`,
     })
     sell_price:number;
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         description: `designation`,
     })
     designation:number;
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         description: `from`,
     })
     from:string;
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         description: `team_buy`,
     })
     team_buy:number;
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         description: `age`,
     })
     age:number;
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         description: `photo`,
     })
     photo:string;
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         description: `status`,
     })
     status:number;

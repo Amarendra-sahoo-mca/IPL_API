@@ -44,7 +44,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PointsController.prototype, "getAll", null);
 __decorate([
-    (0, common_1.Put)("/:id"),
+    (0, common_1.Patch)("/:id"),
     (0, swagger_1.ApiOperation)({ summary: "Update a Points entry" }),
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),

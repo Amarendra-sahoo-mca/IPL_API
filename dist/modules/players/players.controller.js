@@ -25,6 +25,7 @@ const typeorm_2 = require("typeorm");
 const path_1 = require("path");
 const player_entity_1 = require("../../entities/player.entity");
 const filter_dto_1 = require("./filter.dto");
+const playersUpdate_dto_1 = require("./playersUpdate.dto");
 class FileUploadDto {
 }
 exports.FileUploadDto = FileUploadDto;
@@ -41,7 +42,7 @@ let playersController = class playersController {
         return this.terminalService.findAll(queryParams);
     }
     getAlll() {
-        return this.terminalService.setnetionality();
+        return this.terminalService.setimage();
     }
     findTop() {
         return this.terminalService.findTop();
@@ -84,19 +85,8 @@ let playersController = class playersController {
         });
         fs.createReadStream(fullPath).pipe(res);
     }
-    update(id, userDTO, files) {
-        if (!userDTO.dtos) {
-            throw new common_1.BadRequestException('No DTOs received. Make sure you are sending a "dtos" field.');
-        }
-        let dtos;
-        try {
-            dtos = JSON.parse(userDTO.dtos);
-        }
-        catch (error) {
-            console.error('Error parsing dtos:', error);
-            throw new common_1.BadRequestException('Invalid JSON in dtos field. Please check the format.');
-        }
-        return this.terminalService.update(parseInt(id), dtos, files);
+    update(id, DTO) {
+        return this.terminalService.update(parseInt(id), DTO);
     }
 };
 exports.playersController = playersController;
@@ -212,37 +202,11 @@ __decorate([
 ], playersController.prototype, "getFile", null);
 __decorate([
     (0, common_1.Patch)("update/:id"),
-    (0, common_1.UseInterceptors)((0, platform_express_1.AnyFilesInterceptor)({
-        storage: (0, multer_1.diskStorage)({
-            destination: multer_helper_1.MulterHelper.destinationPath,
-            filename: multer_helper_1.MulterHelper.customFileName,
-        }),
-    })),
-    (0, swagger_1.ApiConsumes)('multipart/form-data'),
-    (0, swagger_1.ApiBody)({
-        schema: {
-            type: 'object',
-            properties: {
-                dtos: {
-                    type: 'string',
-                    description: 'JSON string of UserDocumentDto array',
-                },
-                'document_path': {
-                    type: 'array',
-                    items: {
-                        type: 'string',
-                        format: 'binary',
-                    },
-                },
-            },
-        },
-    }),
-    (0, swagger_1.ApiOperation)({ summary: "Update players data" }),
+    (0, swagger_1.ApiOperation)({ summary: "Update menu" }),
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
-    __param(2, (0, common_1.UploadedFiles)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object, Array]),
+    __metadata("design:paramtypes", [String, playersUpdate_dto_1.playersUpdateDto]),
     __metadata("design:returntype", void 0)
 ], playersController.prototype, "update", null);
 exports.playersController = playersController = __decorate([

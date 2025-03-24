@@ -14,13 +14,14 @@ const match_service_1 = require("./match.service");
 const excel_service_1 = require("../../utils/globalServices/excel.service");
 const team_entity_1 = require("../../entities/team.entity");
 const match_entity_1 = require("../../entities/match.entity");
+const points_entity_1 = require("../../entities/points.entity");
 let MatchModule = class MatchModule {
 };
 exports.MatchModule = MatchModule;
 exports.MatchModule = MatchModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([match_entity_1.MatchEntity, team_entity_1.TeamEntity])
+            typeorm_1.TypeOrmModule.forFeature([match_entity_1.MatchEntity, team_entity_1.TeamEntity, points_entity_1.PointEntity])
         ],
         controllers: [
             match_controller_1.MatchController

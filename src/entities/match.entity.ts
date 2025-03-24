@@ -39,6 +39,11 @@ export class MatchEntity{
     })
     awayTeamScore: string;
 
+    @Column({
+        nullable: true
+    })
+    win_desc: string;
+
     @CreateDateColumn()
     created_on: Date;
 

@@ -47,9 +47,10 @@ export class PointsService {
   async findAll() {
 
     try{
-      
     const response =await  this.repository.createQueryBuilder('point')
                 .leftJoinAndMapOne('point.team_data',TeamEntity,'team','point.team = team.id')
+                .orderBy('point.points','DESC')
+                .addOrderBy('CAST(point.run_rate AS DECIMAL)', 'DESC')
                 .getMany();
     return {
       statusCode: HttpStatus.OK,
@@ -83,7 +84,8 @@ export class PointsService {
         return response;
       }
         
-        const  updatedResponse = await this.repository.update(id, dto);
+      const updatedObj = this.repository.merge(user, dto);
+      const updatedResponse = await this.repository.update(id, updatedObj);
          
         return {
             statusCode: HttpStatus.OK,

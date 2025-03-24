@@ -9,63 +9,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MatchDto = void 0;
+exports.playersUpdateDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-class MatchDto {
+class playersUpdateDto {
 }
-exports.MatchDto = MatchDto;
+exports.playersUpdateDto = playersUpdateDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `name`,
     }),
     __metadata("design:type", String)
-], MatchDto.prototype, "name", void 0);
+], playersUpdateDto.prototype, "name", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `base_price`,
     }),
     __metadata("design:type", Number)
-], MatchDto.prototype, "base_price", void 0);
+], playersUpdateDto.prototype, "base_price", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `sell_price`,
     }),
     __metadata("design:type", Number)
-], MatchDto.prototype, "sell_price", void 0);
+], playersUpdateDto.prototype, "sell_price", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `designation`,
     }),
     __metadata("design:type", Number)
-], MatchDto.prototype, "designation", void 0);
+], playersUpdateDto.prototype, "designation", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `from`,
     }),
     __metadata("design:type", String)
-], MatchDto.prototype, "from", void 0);
+], playersUpdateDto.prototype, "from", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `team_buy`,
     }),
     __metadata("design:type", Number)
-], MatchDto.prototype, "team_buy", void 0);
+], playersUpdateDto.prototype, "team_buy", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `age`,
     }),
     __metadata("design:type", Number)
-], MatchDto.prototype, "age", void 0);
+], playersUpdateDto.prototype, "age", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `photo`,
     }),
     __metadata("design:type", String)
-], MatchDto.prototype, "photo", void 0);
+], playersUpdateDto.prototype, "photo", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: `status`,
     }),
     __metadata("design:type", Number)
-], MatchDto.prototype, "status", void 0);
-//# sourceMappingURL=match.dto.js.map
+], playersUpdateDto.prototype, "status", void 0);
+//# sourceMappingURL=playersUpdate.dto.js.map

@@ -291,40 +291,36 @@ let playersService = class playersService {
             });
         }
     }
-    async update(id, userdocumentDTO, files) {
-        const response = await this.findOne(id);
-        const user = response.data;
-        if (!user || user.length == 0) {
-            const response = {
-                statusCode: common_1.HttpStatus.BAD_REQUEST,
-                success: false,
-                message: `players Document ${messages_1.default.NOT_FOUND}`,
-                data: null,
-            };
-            return response;
-        }
+    async update(id, PlayerDTO) {
         try {
-            const filteredDto = Object.fromEntries(Object.entries(userdocumentDTO).filter(([_, value]) => value !== '' && value !== null));
-            const updatedObj = this.repository.merge(user, filteredDto);
-            if (files.length > 0) {
-                updatedObj.photo = files[0].path;
+            const user = await this.repository.findOneBy({ id });
+            if (!user) {
+                const response = {
+                    statusCode: common_1.HttpStatus.BAD_REQUEST,
+                    success: false,
+                    message: `player ${messages_1.default.NOT_FOUND}`,
+                    data: null,
+                };
+                return response;
             }
+            const updatedObj = this.repository.merge(user, PlayerDTO);
             const updatedResponse = await this.repository.update(id, updatedObj);
             return {
                 statusCode: common_1.HttpStatus.OK,
                 success: true,
-                message: `players ${messages_1.default.UPDATE}`,
+                message: `player ${messages_1.default.UPDATE}`,
                 data: updatedResponse,
             };
         }
         catch (error) {
+            console.log(error);
             const response = {
                 statusCode: common_1.HttpStatus.BAD_REQUEST,
                 success: false,
                 message: `players ${messages_1.default.UPDATE_FAILURE}`,
                 data: error,
             };
-            return response;
+            throw response;
         }
     }
     async findOne(id) {

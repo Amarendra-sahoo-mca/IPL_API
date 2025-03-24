@@ -15,6 +15,7 @@ import { join } from "path";
 import { Response } from 'express';
 import { playersEntity } from "src/entities/player.entity";
 import { FilterDTO } from "./filter.dto";
+import { playersUpdateDto } from "./playersUpdate.dto";
 
 export class FileUploadDto {
   @ApiProperty({ type: 'string', format: 'binary' })
@@ -39,7 +40,7 @@ export class playersController{
     @Get("set_player_image")
     @ApiOperation({ summary: "Set players image" })
     getAlll(){
-         return this.terminalService.setnetionality();
+         return this.terminalService.setimage();
     }
 
 
@@ -174,54 +175,10 @@ export class playersController{
     @Patch("update/:id")
     // @UseGuards(JwtAuthGuard)
     // @Roles(Role.ADMIN)
-    @UseInterceptors(
-      AnyFilesInterceptor({
-        storage: diskStorage({
-          destination: MulterHelper.destinationPath,
-          filename: MulterHelper.customFileName,
-        }),
-      })
-    )
-    @ApiConsumes('multipart/form-data')
-    @ApiBody({
-      schema: {
-        type: 'object',
-        properties: {
-          dtos: {
-            type: 'string',
-            description: 'JSON string of UserDocumentDto array',
-          },
-          'document_path': {
-            type: 'array',
-            items: {
-              type: 'string',
-              format: 'binary',
-            },
-          },
-        },
-      },
-    })
-    @ApiOperation({ summary: "Update players data" })
-    update(
-      @Param("id") id: string,
-      @Body() userDTO: any,
-      @UploadedFiles() files: Array<Express.Multer.File>
-    ) {
-     
-      if (!userDTO.dtos) {
-        throw new BadRequestException('No DTOs received. Make sure you are sending a "dtos" field.');
-      }
-    
-      let dtos: playersDto;
-      try {
-        dtos = JSON.parse(userDTO.dtos);
-      } catch (error) {
-        console.error('Error parsing dtos:', error);
-        throw new BadRequestException('Invalid JSON in dtos field. Please check the format.');
-      }
-       
-    
-      return this.terminalService.update(parseInt(id), dtos, files);
+    @ApiOperation({ summary: "Update menu" })
+    update(@Param("id") id: string, @Body()  DTO:playersUpdateDto) {
+ 
+        return this.terminalService.update(parseInt(id), DTO);
     }
     
 } 

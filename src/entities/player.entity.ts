@@ -62,7 +62,7 @@ export class playersEntity{
     @Column({
         type: "enum",
         enum: player_status,
-        comment: '0- written, 1- Buy'
+        comment: '1- Buy , 2- written'
     })
     status: number;
     

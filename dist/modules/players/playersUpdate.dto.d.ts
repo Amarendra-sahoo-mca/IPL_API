@@ -1,4 +1,4 @@
-export declare class MatchDto {
+export declare class playersUpdateDto {
     name: string;
     base_price: number;
     sell_price: number;
