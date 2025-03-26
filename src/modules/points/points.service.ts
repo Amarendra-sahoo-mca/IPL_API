@@ -50,7 +50,7 @@ export class PointsService {
     const response =await  this.repository.createQueryBuilder('point')
                 .leftJoinAndMapOne('point.team_data',TeamEntity,'team','point.team = team.id')
                 .orderBy('point.points','DESC')
-                .addOrderBy('CAST(point.run_rate AS DECIMAL)', 'DESC')
+                .addOrderBy('CAST(point.run_rate AS DECIMAL(10,3))', 'DESC')
                 .getMany();
     return {
       statusCode: HttpStatus.OK,

@@ -369,7 +369,7 @@ let playersService = class playersService {
                 .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id')
                 .orderBy('player.runs', 'DESC')
                 .addOrderBy('player.strike_rate', "DESC")
-                .limit(10)
+                .limit(5)
                 .getMany();
             return {
                 statusCode: common_1.HttpStatus.OK,
@@ -388,8 +388,8 @@ let playersService = class playersService {
                 .createQueryBuilder('player')
                 .innerJoinAndMapOne('player.team', team_entity_1.TeamEntity, 'team', 'player.team_buy = team.id')
                 .orderBy('player.wickets', 'DESC')
-                .addOrderBy('player.economy', "ASC")
-                .limit(10)
+                .addOrderBy('CAST(player.economy AS DECIMAL(10,3))', "ASC")
+                .limit(5)
                 .getMany();
             return {
                 statusCode: common_1.HttpStatus.OK,
