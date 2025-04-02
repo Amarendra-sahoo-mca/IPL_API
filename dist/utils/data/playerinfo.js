@@ -672,7 +672,7 @@ exports.playerdetails = [
     },
     {
         name: 'Shardul Thakur',
-        img: 'https://www.iplt20.com/assets/images/default-headshot.png',
+        img: "https://documents.iplt20.com/ipl/IPLHeadshot2025/105.png",
     },
     {
         name: 'Avesh Khan',
@@ -680,7 +680,7 @@ exports.playerdetails = [
     },
     {
         name: 'Akash Deep',
-        img: 'https://www.iplt20.com/assets/images/default-headshot.png',
+        img: "https://documents.iplt20.com/ipl/IPLHeadshot2025/1007.png",
     },
     {
         name: 'M. Siddharth',
